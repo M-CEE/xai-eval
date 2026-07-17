@@ -1,0 +1,86 @@
+PREPROCESSING LOG
+============================================================
+
+------------------------------------------------------------
+1. CONFIGURATION
+------------------------------------------------------------
+{
+  "dataset_name": "heart_disease_uci",
+  "domain": "healthcare",
+  "model_type": "xgb",
+  "datasets_root": "../Datasets",
+  "models_root": "../Models",
+  "push_to_hub": true,
+  "hub_repo_id": "cike-dev/xai-heart-disease-uci-xgb",
+  "param_distributions": "see DEFAULT_PARAM_SPACES / config"
+}
+target not given in config -- read 'num' from dataset_info.json
+
+------------------------------------------------------------
+2. LOAD ARTIFACTS
+------------------------------------------------------------
+Loaded pre-balance train: (734, 25)
+Loaded balanced train:    (812, 25)
+Loaded test:               (184, 25)
+Feature columns (25): ['age', 'trestbps', 'chol', 'thalch', 'oldpeak', 'ca', 'sex_Female', 'sex_Male', 'cp_asymptomatic', 'cp_atypical angina', 'cp_non-anginal', 'cp_typical angina', 'fbs_False', 'fbs_True', 'restecg_lv hypertrophy', 'restecg_normal', 'restecg_st-t abnormality', 'exang_False', 'exang_True', 'slope_downsloping', 'slope_flat', 'slope_upsloping', 'thal_fixed defect', 'thal_normal', 'thal_reversable defect']
+Fitted transformers bundle found: True
+
+------------------------------------------------------------
+3. HYPERPARAMETER SEARCH
+------------------------------------------------------------
+model_type: xgb
+search_method: RandomizedSearchCV, n_iter=50
+cv: StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+scoring: roc_auc
+param_distributions: {'clf__n_estimators': <scipy.stats._distn_infrastructure.rv_discrete_frozen object at 0x0000023757CCFED0>, 'clf__max_depth': <scipy.stats._distn_infrastructure.rv_discrete_frozen object at 0x0000023757ACFCE0>, 'clf__learning_rate': <scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x0000023757A9B620>, 'clf__subsample': <scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x00000237586B6FD0>, 'clf__colsample_bytree': <scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x00000237586B7110>}
+
+About to fit 5 folds x 50 candidates = 250 total fits. verbose output below will print each fit's progress as it happens (not silent).
+
+Search completed in 9.4s
+Best CV roc_auc: 0.8740
+Best params (pipeline-prefixed): {'clf__colsample_bytree': np.float64(0.6036788206466518), 'clf__learning_rate': np.float64(0.03942674743114931), 'clf__max_depth': 5, 'clf__n_estimators': 252, 'clf__subsample': np.float64(0.6020246335384875)}
+
+------------------------------------------------------------
+4. REFIT FINAL MODEL
+------------------------------------------------------------
+Refitting on full balanced training set with params: {'colsample_bytree': np.float64(0.6036788206466518), 'learning_rate': np.float64(0.03942674743114931), 'max_depth': 5, 'n_estimators': 252, 'subsample': np.float64(0.6020246335384875)}
+Final refit completed in 0.17s on 812 rows
+
+------------------------------------------------------------
+5. HELD-OUT TEST EVALUATION
+------------------------------------------------------------
+Test metrics:
+  accuracy: 0.8587
+  precision: 0.8455
+  recall: 0.9118
+  f1: 0.8774
+  roc_auc: 0.9125
+  pr_auc: 0.9161
+Confusion matrix:
+[[65 17]
+ [ 9 93]]
+
+------------------------------------------------------------
+6. FIGURES
+------------------------------------------------------------
+[FIGURE SAVED] fig_confusion_matrix.png  |  caption: Confusion matrix on the held-out test set.
+[FIGURE SAVED] fig_roc_curve.png  |  caption: ROC curve on the held-out test set.
+[FIGURE SAVED] fig_precision_recall_curve.png  |  caption: Precision-Recall curve on the held-out test set.
+[FIGURE SAVED] fig_hyperparameter_search_scores.png  |  caption: Distribution of mean CV roc_auc across all RandomizedSearchCV candidates (dashed line = best candidate).
+[FIGURE SAVED] fig_baseline_feature_importance.png  |  caption: XGB built-in feature importance (Gini/gain), top 20 features -- a sanity-check baseline, not a SHAP/LIME explanation.
+
+------------------------------------------------------------
+7. SAVE MODEL ARTIFACT + SCHEMA
+------------------------------------------------------------
+Saved model (skops): ../Models\healthcare\heart_disease_uci\xgb\model\model.skops
+Saved feature schema: ../Models\healthcare\heart_disease_uci\xgb\model\feature_schema.json
+
+------------------------------------------------------------
+9. PUSH TO HUGGING FACE HUB
+------------------------------------------------------------
+Pushed to https://huggingface.co/cike-dev/xai-heart-disease-uci-xgb (commit cb7bd211c66931be5ee8f0fb7f7071a6a789fc6f)
+
+------------------------------------------------------------
+DONE
+------------------------------------------------------------
+Best CV roc_auc: 0.8740  |  Test roc_auc: 0.9125

@@ -1,0 +1,21 @@
+{
+  "correctly_classified": {
+    "position_in_X_explain": 64,
+    "dataframe_index": 64,
+    "y_true": 0,
+    "y_pred": 0,
+    "predicted_proba_class1": 0.10273481905460358,
+    "confidence_in_predicted_class": 0.8972651958465576
+  },
+  "incorrectly_classified": {
+    "position_in_X_explain": 121,
+    "dataframe_index": 121,
+    "y_true": 1,
+    "y_pred": 0,
+    "predicted_proba_class1": 0.1566344052553177,
+    "confidence_in_predicted_class": 0.8433656096458435
+  },
+  "selection_rule": "highest_confidence",
+  "confidence_definition": "predicted probability of the model's own predicted class",
+  "generated_at_utc": "2026-07-12T20:09:48.512603Z"
+}

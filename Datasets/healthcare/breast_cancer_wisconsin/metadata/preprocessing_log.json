@@ -1,0 +1,41 @@
+{
+  "dataset_name": "breast_cancer_wisconsin",
+  "domain": "healthcare",
+  "source": "Kaggle: uciml/breast-cancer-wisconsin-data (UCI Breast Cancer Wisconsin Diagnostic)",
+  "data_path": "https://raw.githubusercontent.com/sharmaroshan/Breast-Cancer-Wisconsin/master/wisconsin.csv",
+  "column_names": null,
+  "target": "diagnosis",
+  "drop_columns": [
+    "id",
+    "Unnamed: 32"
+  ],
+  "target_mapping": {
+    "M": 1,
+    "B": 0
+  },
+  "zero_as_missing_cols": null,
+  "random_state": 42,
+  "test_size": 0.2,
+  "imputation_strategy_num": "median",
+  "imputation_strategy_cat": "most_frequent",
+  "scaler": "StandardScaler",
+  "balancing": "SMOTE",
+  "feature_descriptions": {
+    "radius_mean": "Mean of distances from center to points on the perimeter",
+    "texture_mean": "Standard deviation of gray-scale values",
+    "perimeter_mean": "Mean perimeter of the cell nuclei",
+    "area_mean": "Mean area of the cell nuclei",
+    "diagnosis": "Diagnosis (1 = malignant, 0 = benign)"
+  },
+  "datasets_root": "../Datasets",
+  "runtime": {
+    "n_duplicates_removed": 0,
+    "missing_before_imputation": 0,
+    "train_rows": 455,
+    "test_rows": 114,
+    "train_rows_after_balancing": 570,
+    "prebalance_train_file": "X_train_prebalance.csv",
+    "balanced_train_file": "X_train_balanced.csv",
+    "fitted_transformers_file": "fitted_transformers.joblib"
+  }
+}

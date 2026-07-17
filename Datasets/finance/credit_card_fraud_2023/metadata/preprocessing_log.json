@@ -1,0 +1,36 @@
+{
+  "dataset_name": "credit_card_fraud_2023",
+  "domain": "finance",
+  "source": "Kaggle: nelgiriyewithana/credit-card-fraud-detection-dataset-2023",
+  "data_path": "C:\\Users\\Offic\\.cache\\kagglehub\\datasets\\nelgiriyewithana\\credit-card-fraud-detection-dataset-2023\\versions\\1\\creditcard_2023.csv",
+  "column_names": null,
+  "target": "Class",
+  "drop_columns": [
+    "id"
+  ],
+  "target_mapping": null,
+  "target_binarize": null,
+  "zero_as_missing_cols": null,
+  "random_state": 42,
+  "test_size": 0.2,
+  "imputation_strategy_num": "median",
+  "imputation_strategy_cat": "most_frequent",
+  "scaler": "StandardScaler",
+  "balancing": null,
+  "high_missingness_warn_threshold": 0.4,
+  "feature_descriptions": {
+    "Amount": "Transaction amount",
+    "Class": "Fraud indicator (0 = legitimate, 1 = fraudulent)"
+  },
+  "datasets_root": "../Datasets",
+  "runtime": {
+    "n_duplicates_removed": 1,
+    "missing_before_imputation": 0,
+    "train_rows": 454903,
+    "test_rows": 113726,
+    "train_rows_after_balancing": 454903,
+    "prebalance_train_file": "X_train_prebalance.csv",
+    "balanced_train_file": "X_train_balanced.csv",
+    "fitted_transformers_file": "fitted_transformers.joblib"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "dataset_name": "loan_default",
+  "domain": "finance",
+  "model_type": "rf",
+  "model_name": "rf",
+  "random_state": 42,
+  "cv_folds": 5,
+  "search_method": "optuna",
+  "n_trials": 50,
+  "scoring": "roc_auc",
+  "best_hyperparameters": {
+    "n_estimators": 449,
+    "max_depth": 30,
+    "min_samples_split": 9,
+    "min_samples_leaf": 18,
+    "max_features": "sqrt"
+  },
+  "search_time_seconds": 5636.3,
+  "final_refit_time_seconds": 119.24,
+  "total_runtime_seconds": 5755.54,
+  "trained_at_utc": "2026-07-07T06:15:46.446188Z",
+  "python_version": "3.13.9",
+  "sklearn_version": "1.7.2",
+  "xgboost_version": "3.3.0",
+  "model_path": "../Models\\finance\\loan_default\\rf\\model\\model.skops",
+  "hub_repo_id": null,
+  "hub_commit_sha": "9976aa476cdcbc9f325d058990455b641771b38d"
+}

@@ -1,0 +1,27 @@
+{
+  "dataset_name": "heart_disease_uci",
+  "domain": "healthcare",
+  "model_type": "xgb",
+  "model_name": "xgb",
+  "random_state": 42,
+  "cv_folds": 5,
+  "search_method": "random",
+  "n_iter": 50,
+  "scoring": "roc_auc",
+  "best_hyperparameters": {
+    "colsample_bytree": 0.6036788206466518,
+    "learning_rate": 0.03942674743114931,
+    "max_depth": 5,
+    "n_estimators": 252,
+    "subsample": 0.6020246335384875
+  },
+  "search_time_seconds": 9.37,
+  "final_refit_time_seconds": 0.17,
+  "trained_at_utc": "2026-07-05T15:00:19.164191Z",
+  "python_version": "3.13.9",
+  "sklearn_version": "1.7.2",
+  "xgboost_version": "3.3.0",
+  "model_path": "../Models\\healthcare\\heart_disease_uci\\xgb\\model\\model.skops",
+  "hub_repo_id": "cike-dev/xai-heart-disease-uci-xgb",
+  "hub_commit_sha": "cb7bd211c66931be5ee8f0fb7f7071a6a789fc6f"
+}

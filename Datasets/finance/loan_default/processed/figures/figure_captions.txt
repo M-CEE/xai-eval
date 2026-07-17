@@ -1,0 +1,7 @@
+FIGURE CAPTIONS (filename -> caption)
+============================================================
+fig_missing_value_pattern_heatmap.png: Heatmap of missing values across all records after sentinel-value recoding, prior to imputation.
+fig_feature_distributions_observed_values.png: Histograms with kernel density estimates for numerical features, computed on observed (non-missing) values.
+fig_pearson_correlation_heatmap.png: Pearson correlation matrix across numerical features and the target variable.
+fig_class_balance_target.png: Class balance of the target variable Default in the full (pre-split) dataset.
+fig_outlier_boxplots_train_set.png: Boxplots of all numerical training-set features used for IQR-based outlier screening (outliers documented, not removed).

@@ -1,0 +1,22 @@
+{
+  "feature_order": [
+    "Pregnancies",
+    "Glucose",
+    "BloodPressure",
+    "SkinThickness",
+    "Insulin",
+    "BMI",
+    "DiabetesPedigreeFunction",
+    "Age"
+  ],
+  "dtypes": {
+    "Pregnancies": "float64",
+    "Glucose": "float64",
+    "BloodPressure": "float64",
+    "SkinThickness": "float64",
+    "Insulin": "float64",
+    "BMI": "float64",
+    "DiabetesPedigreeFunction": "float64",
+    "Age": "float64"
+  }
+}

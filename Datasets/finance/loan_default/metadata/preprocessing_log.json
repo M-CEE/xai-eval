@@ -1,0 +1,50 @@
+{
+  "dataset_name": "loan_default",
+  "domain": "finance",
+  "source": "Kaggle: nikhil1e9/loan-default (mirror: https://raw.githubusercontent.com/f-kuzey-edes-huyal/loan_default_prediction/main/Loan_default.csv)",
+  "data_path": "https://raw.githubusercontent.com/f-kuzey-edes-huyal/loan_default_prediction/main/Loan_default.csv",
+  "column_names": null,
+  "target": "Default",
+  "drop_columns": [
+    "LoanID"
+  ],
+  "target_mapping": null,
+  "zero_as_missing_cols": null,
+  "random_state": 42,
+  "test_size": 0.2,
+  "imputation_strategy_num": "median",
+  "imputation_strategy_cat": "most_frequent",
+  "scaler": "StandardScaler",
+  "balancing": "SMOTE",
+  "high_missingness_warn_threshold": 0.4,
+  "feature_descriptions": {
+    "Age": "Applicant age in years",
+    "Income": "Annual income (currency units as provided by source)",
+    "LoanAmount": "Requested/approved loan amount",
+    "CreditScore": "Credit score at time of application",
+    "MonthsEmployed": "Months employed at current job",
+    "NumCreditLines": "Number of open credit lines",
+    "InterestRate": "Interest rate on the loan (%)",
+    "LoanTerm": "Loan term in months",
+    "DTIRatio": "Debt-to-income ratio",
+    "Education": "Highest education level (High School/Bachelor's/Master's/PhD)",
+    "EmploymentType": "Employment status (Full-time/Part-time/Self-employed/Unemployed)",
+    "MaritalStatus": "Marital status (Single/Married/Divorced)",
+    "HasMortgage": "Whether the applicant currently has a mortgage (Yes/No)",
+    "HasDependents": "Whether the applicant has dependents (Yes/No)",
+    "LoanPurpose": "Stated purpose of the loan (Auto/Business/Education/Home/Other)",
+    "HasCoSigner": "Whether the loan has a co-signer (Yes/No)",
+    "Default": "Loan default indicator (0 = repaid, 1 = defaulted)"
+  },
+  "datasets_root": "../Datasets",
+  "runtime": {
+    "n_duplicates_removed": 0,
+    "missing_before_imputation": 0,
+    "train_rows": 204277,
+    "test_rows": 51070,
+    "train_rows_after_balancing": 361110,
+    "prebalance_train_file": "X_train_prebalance.csv",
+    "balanced_train_file": "X_train_balanced.csv",
+    "fitted_transformers_file": "fitted_transformers.joblib"
+  }
+}

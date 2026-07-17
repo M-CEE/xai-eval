@@ -1,0 +1,71 @@
+{
+  "explainer_library": "lime",
+  "explainer_type": "LimeTabularExplainer",
+  "lime_version": "unknown",
+  "mode": "classification",
+  "discretize_continuous": true,
+  "num_samples_per_instance": 1000,
+  "num_features_per_instance": 8,
+  "background_data_source": "X_train_balanced",
+  "background_data_rows": 800,
+  "n_instances_explained": 154,
+  "instance_selection_random_state": 42,
+  "lime_random_state": 42,
+  "dataset_characteristics": {
+    "dataset_name": "pima_diabetes",
+    "domain": "healthcare",
+    "n_features": 8,
+    "feature_names": [
+      "Pregnancies",
+      "Glucose",
+      "BloodPressure",
+      "SkinThickness",
+      "Insulin",
+      "BMI",
+      "DiabetesPedigreeFunction",
+      "Age"
+    ],
+    "n_test_total": 154,
+    "n_train_balanced_total": 800,
+    "test_class_distribution": {
+      "0": 0.6493506493506493,
+      "1": 0.35064935064935066
+    }
+  },
+  "model_reference": {
+    "dataset_name": "pima_diabetes",
+    "domain": "healthcare",
+    "model_type": "xgb",
+    "model_name": "xgb",
+    "model_path": "../Models\\healthcare\\pima_diabetes\\xgb\\model\\model.skops",
+    "training_random_state": 42,
+    "training_scoring": "roc_auc",
+    "best_hyperparameters": {
+      "colsample_bytree": 0.8446612641953124,
+      "learning_rate": 0.012049228513718048,
+      "max_depth": 3,
+      "n_estimators": 148,
+      "subsample": 0.8099098641033556
+    },
+    "hub_repo_id": "cike-dev/xai-pima-diabetes-xgb",
+    "hub_commit_sha": "8cd640316276d9ec646b9d84053814b51d5ef034",
+    "test_performance": {
+      "accuracy": 0.7142857142857143,
+      "precision": 0.5657894736842105,
+      "recall": 0.7962962962962963,
+      "f1": 0.6615384615384615,
+      "roc_auc": 0.8164814814814815,
+      "pr_auc": 0.6976179724771923
+    }
+  },
+  "library_versions": {
+    "lime": "unknown",
+    "sklearn": "1.7.2",
+    "xgboost": "3.3.0",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "python": "3.13.9"
+  },
+  "runtime_seconds": 1.97,
+  "generated_at_utc": "2026-07-12T20:09:51.922983Z"
+}

@@ -1,0 +1,208 @@
+PREPROCESSING LOG
+============================================================
+CONFIG: {'dataset_name': 'heart_disease_uci', 'domain': 'healthcare', 'source': 'Kaggle: redwankarimsony/heart-disease-data (UCI combined: Cleveland, Hungary, Switzerland, VA Long Beach)', 'data_path': 'https://raw.githubusercontent.com/ZhaoXu-EE/Heart-Disease-Dataset/main/heart_disease_uci.csv', 'column_names': None, 'target': 'num', 'drop_columns': ['id', 'dataset'], 'target_mapping': {0: 0, 1: 1, 2: 1, 3: 1, 4: 1}, 'zero_as_missing_cols': None, 'random_state': 42, 'test_size': 0.2, 'imputation_strategy_num': 'median', 'imputation_strategy_cat': 'most_frequent', 'scaler': 'StandardScaler', 'balancing': 'SMOTE', 'high_missingness_warn_threshold': 0.4, 'feature_descriptions': {'age': 'Age in years', 'sex': 'Sex (Male/Female)', 'cp': 'Chest pain type', 'trestbps': 'Resting blood pressure (mm Hg on admission)', 'chol': 'Serum cholesterol (mg/dl)', 'fbs': 'Fasting blood sugar > 120 mg/dl (TRUE/FALSE)', 'restecg': 'Resting electrocardiographic results', 'thalch': 'Maximum heart rate achieved', 'exang': 'Exercise-induced angina (TRUE/FALSE)', 'oldpeak': 'ST depression induced by exercise relative to rest', 'slope': 'Slope of the peak exercise ST segment', 'ca': 'Number of major vessels (0-3) colored by fluoroscopy', 'thal': 'Thalassemia result (normal / fixed defect / reversible defect)', 'num': 'Diagnosis of heart disease (0 = absent, 1 = present; binarized from original 0-4 severity scale)'}, 'datasets_root': '../Datasets'}
+
+------------------------------------------------------------
+2. DATASET LOADING
+------------------------------------------------------------
+Loaded from: https://raw.githubusercontent.com/ZhaoXu-EE/Heart-Disease-Dataset/main/heart_disease_uci.csv
+Shape: 920 rows x 16 columns
+Raw data cached to: ../Datasets\healthcare\heart_disease_uci\raw\heart_disease_uci_raw.csv
+Dropped non-feature columns: ['id', 'dataset']
+Applied target_mapping to 'num': {0: 0, 1: 1, 2: 1, 3: 1, 4: 1}
+
+------------------------------------------------------------
+3. INITIAL INSPECTION
+------------------------------------------------------------
+age           int64
+sex          object
+cp           object
+trestbps    float64
+chol        float64
+fbs          object
+restecg      object
+thalch      float64
+exang        object
+oldpeak     float64
+slope        object
+ca          float64
+thal         object
+num           int64
+
+Descriptive statistics:
+          count unique           top freq        mean        std   min    25%    50%    75%    max
+age       920.0    NaN           NaN  NaN    53.51087   9.424685  28.0   47.0   54.0   60.0   77.0
+sex         920      2          Male  726         NaN        NaN   NaN    NaN    NaN    NaN    NaN
+cp          920      4  asymptomatic  496         NaN        NaN   NaN    NaN    NaN    NaN    NaN
+trestbps  861.0    NaN           NaN  NaN  132.132404   19.06607   0.0  120.0  130.0  140.0  200.0
+chol      890.0    NaN           NaN  NaN  199.130337  110.78081   0.0  175.0  223.0  268.0  603.0
+fbs         830      2         False  692         NaN        NaN   NaN    NaN    NaN    NaN    NaN
+restecg     918      3        normal  551         NaN        NaN   NaN    NaN    NaN    NaN    NaN
+thalch    865.0    NaN           NaN  NaN  137.545665  25.926276  60.0  120.0  140.0  157.0  202.0
+exang       865      2         False  528         NaN        NaN   NaN    NaN    NaN    NaN    NaN
+oldpeak   858.0    NaN           NaN  NaN    0.878788   1.091226  -2.6    0.0    0.5    1.5    6.2
+slope       611      3          flat  345         NaN        NaN   NaN    NaN    NaN    NaN    NaN
+ca        309.0    NaN           NaN  NaN    0.676375   0.935653   0.0    0.0    0.0    1.0    3.0
+thal        434      3        normal  196         NaN        NaN   NaN    NaN    NaN    NaN    NaN
+num       920.0    NaN           NaN  NaN    0.553261   0.497426   0.0    0.0    1.0    1.0    1.0
+
+Total missing cells: 1759
+Duplicate rows: 2
+
+------------------------------------------------------------
+4. DATA QUALITY ASSESSMENT
+------------------------------------------------------------
+Duplicate rows found: 2 (removed: 2)
+
+Missingness summary (after sentinel recoding):
+          missing_count  missing_pct
+age                   0         0.00
+ca                  609        66.34
+chol                 29         3.16
+cp                    0         0.00
+exang                55         5.99
+fbs                  90         9.80
+num                   0         0.00
+oldpeak              62         6.75
+restecg               2         0.22
+sex                   0         0.00
+slope               307        33.44
+thal                484        52.72
+thalch               55         5.99
+trestbps             59         6.43
+
+WARNING: the following columns exceed 40% missing and will still be median/mode-imputed under the standard protocol. Imputing at this rate can materially distort these features -- flag for the methodology/limitations section:
+      missing_count  missing_pct
+ca              609        66.34
+thal            484        52.72
+
+Numerical columns: ['age', 'trestbps', 'chol', 'thalch', 'oldpeak', 'ca']
+Categorical columns: ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'thal']
+
+------------------------------------------------------------
+DESCRIPTIVE VISUALIZATIONS
+------------------------------------------------------------
+[FIGURE SAVED] fig_missing_value_pattern_heatmap.png  |  caption: Heatmap of missing values across all records after sentinel-value recoding, prior to imputation.
+[FIGURE SAVED] fig_feature_distributions_observed_values.png  |  caption: Histograms with kernel density estimates for numerical features, computed on observed (non-missing) values.
+[FIGURE SAVED] fig_pearson_correlation_heatmap.png  |  caption: Pearson correlation matrix across numerical features and the target variable.
+[FIGURE SAVED] fig_class_balance_target.png  |  caption: Class balance of the target variable num in the full (pre-split) dataset.
+
+------------------------------------------------------------
+5. TRAIN/TEST SPLIT
+------------------------------------------------------------
+Train: 734 rows | Test: 184 rows
+Stratified on target: True
+
+------------------------------------------------------------
+6. MISSING VALUE HANDLING
+------------------------------------------------------------
+Numerical imputation strategy: median (fit on train only)
+age          54.0
+trestbps    130.0
+chol        223.0
+thalch      140.0
+oldpeak       0.5
+ca            0.0
+
+Categorical imputation strategy: most_frequent (fit on train only)
+sex                Male
+cp         asymptomatic
+fbs               False
+restecg          normal
+exang             False
+slope              flat
+thal             normal
+
+Remaining missing values after imputation: 0
+
+------------------------------------------------------------
+7. ENCODING
+------------------------------------------------------------
+One-hot encoded columns: ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'thal']
+Resulting encoded feature columns: ['sex_Female', 'sex_Male', 'cp_asymptomatic', 'cp_atypical angina', 'cp_non-anginal', 'cp_typical angina', 'fbs_False', 'fbs_True', 'restecg_lv hypertrophy', 'restecg_normal', 'restecg_st-t abnormality', 'exang_False', 'exang_True', 'slope_downsloping', 'slope_flat', 'slope_upsloping', 'thal_fixed defect', 'thal_normal', 'thal_reversable defect']
+
+------------------------------------------------------------
+8. OUTLIER ANALYSIS (documented only, not removed)
+------------------------------------------------------------
+          n_outliers_iqr  lower_bound  upper_bound
+feature                                           
+age                    0       27.500       79.500
+trestbps              23       90.000      170.000
+chol                 149       40.875      403.875
+thalch                 2       67.500      207.500
+oldpeak               12       -2.250        3.750
+ca                   101        0.000        0.000
+
+Note: outliers are documented for review only; no rows were removed. Automatic removal is avoided here to preserve interpretability for downstream XAI analysis (SHAP/LIME).
+[FIGURE SAVED] fig_outlier_boxplots_train_set.png  |  caption: Boxplots of all numerical training-set features used for IQR-based outlier screening (outliers documented, not removed).
+
+------------------------------------------------------------
+9. SCALING
+------------------------------------------------------------
+Scaler: StandardScaler (fit on train only)
+                mean       scale
+age        53.566757    9.332361
+trestbps  132.148501   17.944997
+chol      200.855586  110.112419
+thalch    137.832425   25.205271
+oldpeak     0.857493    1.059532
+ca          0.223433    0.619128
+
+------------------------------------------------------------
+10. CLASS IMBALANCE HANDLING
+------------------------------------------------------------
+Class balance before:
+num
+1    55.31
+0    44.69
+
+Applied SMOTE (train set only; test set untouched).
+Class balance after:
+num
+1    50.0
+0    50.0
+
+------------------------------------------------------------
+11. SAVE PROCESSED DATA
+------------------------------------------------------------
+Saved: ../Datasets\healthcare\heart_disease_uci\processed\data\X_train_prebalance.csv
+Saved: ../Datasets\healthcare\heart_disease_uci\processed\data\y_train_prebalance.csv
+Saved: ../Datasets\healthcare\heart_disease_uci\processed\data\X_train_balanced.csv
+Saved: ../Datasets\healthcare\heart_disease_uci\processed\data\y_train_balanced.csv
+Saved: ../Datasets\healthcare\heart_disease_uci\processed\data\X_test.csv
+Saved: ../Datasets\healthcare\heart_disease_uci\processed\data\y_test.csv
+
+Note: 'prebalance' = post impute/encode/scale, pre-SMOTE (use this for CV-based hyperparameter search, resampling inside each fold). 'balanced' = full SMOTE-applied training set (use this for the final refit with the chosen hyperparameters).
+
+------------------------------------------------------------
+11b. SAVE FITTED TRANSFORMERS
+------------------------------------------------------------
+Saved fitted imputer/encoder/scaler bundle: ../Datasets\healthcare\heart_disease_uci\metadata\fitted_transformers.joblib
+
+========================================
+DATASET: heart_disease_uci
+DOMAIN: healthcare
+
+Samples: 920
+Features: 13
+
+Missing Values (pre-imputation): 1752
+Duplicates Removed: 2
+
+Train Size (before balancing): 734
+Train Size (after balancing): 812
+Test Size: 184
+
+Scaling: StandardScaler
+Imputation: median
+
+Class Balance Before:
+  1 = 55.3%
+  0 = 44.7%
+
+Class Balance After:
+  1 = 50.0%
+  0 = 50.0%
+
+Balancing: SMOTE
+========================================

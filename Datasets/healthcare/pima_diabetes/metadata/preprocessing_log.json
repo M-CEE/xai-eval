@@ -1,0 +1,53 @@
+{
+  "dataset_name": "pima_diabetes",
+  "domain": "healthcare",
+  "source": "UCI Pima Indians Diabetes Database (via public mirror)",
+  "data_path": "https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv",
+  "column_names": [
+    "Pregnancies",
+    "Glucose",
+    "BloodPressure",
+    "SkinThickness",
+    "Insulin",
+    "BMI",
+    "DiabetesPedigreeFunction",
+    "Age",
+    "Outcome"
+  ],
+  "target": "Outcome",
+  "zero_as_missing_cols": [
+    "Glucose",
+    "BloodPressure",
+    "SkinThickness",
+    "Insulin",
+    "BMI"
+  ],
+  "random_state": 42,
+  "test_size": 0.2,
+  "imputation_strategy_num": "median",
+  "imputation_strategy_cat": "most_frequent",
+  "scaler": "StandardScaler",
+  "balancing": "SMOTE",
+  "feature_descriptions": {
+    "Pregnancies": "Number of times pregnant",
+    "Glucose": "Plasma glucose concentration (2h oral glucose tolerance test)",
+    "BloodPressure": "Diastolic blood pressure (mm Hg)",
+    "SkinThickness": "Triceps skin fold thickness (mm)",
+    "Insulin": "2-Hour serum insulin (mu U/ml)",
+    "BMI": "Body mass index (weight in kg / (height in m)^2)",
+    "DiabetesPedigreeFunction": "Diabetes pedigree function (genetic risk score)",
+    "Age": "Age (years)",
+    "Outcome": "Class variable (0 = non-diabetic, 1 = diabetic)"
+  },
+  "datasets_root": "../Datasets",
+  "runtime": {
+    "n_duplicates_removed": 0,
+    "missing_before_imputation": 652,
+    "train_rows": 614,
+    "test_rows": 154,
+    "train_rows_after_balancing": 800,
+    "prebalance_train_file": "X_train_prebalance.csv",
+    "balanced_train_file": "X_train_balanced.csv",
+    "fitted_transformers_file": "fitted_transformers.joblib"
+  }
+}

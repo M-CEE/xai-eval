@@ -1,0 +1,27 @@
+{
+  "dataset_name": "breast_cancer_wisconsin",
+  "domain": "healthcare",
+  "model_type": "xgb",
+  "model_name": "xgb",
+  "random_state": 42,
+  "cv_folds": 5,
+  "search_method": "random",
+  "n_iter": 50,
+  "scoring": "roc_auc",
+  "best_hyperparameters": {
+    "colsample_bytree": 0.7077649335194086,
+    "learning_rate": 0.0807964014518545,
+    "max_depth": 5,
+    "n_estimators": 473,
+    "subsample": 0.687505687829228
+  },
+  "search_time_seconds": 10.04,
+  "final_refit_time_seconds": 0.26,
+  "trained_at_utc": "2026-07-05T14:59:00.444798Z",
+  "python_version": "3.13.9",
+  "sklearn_version": "1.7.2",
+  "xgboost_version": "3.3.0",
+  "model_path": "../Models\\healthcare\\breast_cancer_wisconsin\\xgb\\model\\model.skops",
+  "hub_repo_id": "cike-dev/xai-breast-cancer-wisconsin-xgb",
+  "hub_commit_sha": "a28745f6106fb312c93f5e21ee158d1fd8d42c6c"
+}

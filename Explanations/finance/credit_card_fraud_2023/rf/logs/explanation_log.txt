@@ -1,0 +1,66 @@
+PREPROCESSING LOG
+============================================================
+
+------------------------------------------------------------
+1. CONFIGURATION
+------------------------------------------------------------
+{
+  "dataset_name": "credit_card_fraud_2023",
+  "domain": "finance",
+  "model_name": "rf",
+  "explainers": [
+    "shap",
+    "lime"
+  ],
+  "datasets_root": "../Datasets",
+  "models_root": "../Models",
+  "explanations_root": "../Explanations"
+}
+
+------------------------------------------------------------
+2. LOAD MODEL + DATA
+------------------------------------------------------------
+Loaded model: ../Models\finance\credit_card_fraud_2023\rf\model\model.skops (trusted types: [])
+Model: rf on credit_card_fraud_2023 (finance)
+Feature order (29): ['V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10', 'V11', 'V12', 'V13', 'V14', 'V15', 'V16', 'V17', 'V18', 'V19', 'V20', 'V21', 'V22', 'V23', 'V24', 'V25', 'V26', 'V27', 'V28', 'Amount']
+X_test: (113726, 29), X_train_balanced (LIME background): (454903, 29)
+Model test performance: {'accuracy': 0.999806552591316, 'precision': 0.9996132548123406, 'recall': 1.0, 'f1': 0.9998065900059782, 'roc_auc': 0.9999845294463713, 'pr_auc': 0.9999626336349561}
+
+------------------------------------------------------------
+3. SELECT EXPLANATION SUBSET
+------------------------------------------------------------
+Selected 500 instances (stratified_random)
+Class distribution -- full test: {0: 0.5, 1: 0.5}, selected: {0: 0.5, 1: 0.5}
+Saved: ../Explanations\finance\credit_card_fraud_2023\rf\instances\metadata.json, ../Explanations\finance\credit_card_fraud_2023\rf\instances\X_explain.csv, ../Explanations\finance\credit_card_fraud_2023\rf\instances\y_explain.csv
+
+------------------------------------------------------------
+3B. SELECT CASE INSTANCES
+------------------------------------------------------------
+Case selection rule: highest_confidence
+Correctly classified case: {'position_in_X_explain': 1, 'dataframe_index': 82820, 'y_true': 1, 'y_pred': 1, 'predicted_proba_class1': 1.0, 'confidence_in_predicted_class': 1.0}
+No incorrectly-classified instance found in the explanation subset -- waterfall_case2/lime case2 plots will be skipped.
+Saved: ../Explanations\finance\credit_card_fraud_2023\rf\instances\case_instances.json
+
+------------------------------------------------------------
+4. SHAP EXPLANATIONS
+------------------------------------------------------------
+SHAP values: (500, 29), computed in 97.2s
+Saved: ../Explanations\finance\credit_card_fraud_2023\rf\shap\shap_values.npy, base_values.npy, feature_importance.csv, metadata.json
+[FIGURE SAVED] summary.png  |  caption: SHAP beeswarm summary plot (top features by impact).
+[FIGURE SAVED] bar.png  |  caption: Features ranked by mean |SHAP value|.
+[FIGURE SAVED] waterfall_case1.png  |  caption: SHAP waterfall for a correctly classified test instance (y_true=1, y_pred=1, p(class 1)=1.000).
+Skipping waterfall_case2.png -- no incorrectly_classified instance available.
+
+------------------------------------------------------------
+5. LIME EXPLANATIONS
+------------------------------------------------------------
+LIME explanations for 500 instances, computed in 75.0s
+Saved: lime_explanations.csv, lime_instance_summary.csv, metadata.json
+[FIGURE SAVED] case1.png  |  caption: Standard LIME local explanation for a correctly classified test instance (y_true=1, y_pred=1, p(class 1)=1.000).
+Skipping case2.png -- no incorrectly_classified instance available.
+Updated master experiment protocol: ../Explanations\experiment_protocol.json (11 run(s) covered)
+
+------------------------------------------------------------
+DONE
+------------------------------------------------------------
+Explanation artifacts at: ../Explanations\finance\credit_card_fraud_2023\rf

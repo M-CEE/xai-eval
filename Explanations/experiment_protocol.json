@@ -1,0 +1,111 @@
+{
+  "description": "Fixed explanation-generation protocol shared across every dataset x model run in this experiment. Per-run specifics (actual selected instances, actual case picks) live in each run's own Explanations/<domain>/<dataset>/<model>/instances/ files; this file documents the SHARED RULES only.",
+  "protocol": {
+    "instance_selection": {
+      "small_test_threshold": 1000,
+      "target_n_instances": 500,
+      "sampling_method": "stratified_random (sklearn train_test_split with stratify=y)",
+      "random_state": 42
+    },
+    "case_instance_selection": {
+      "rule": "highest_confidence",
+      "rule_options": [
+        "first",
+        "highest_confidence",
+        "median_confidence"
+      ],
+      "confidence_definition": "predicted probability of the model's own predicted class"
+    },
+    "shap": {
+      "explainer_library": "shap",
+      "explainer_type": "TreeExplainer",
+      "feature_perturbation": "tree_path_dependent",
+      "top_n_features_exported": 10
+    },
+    "lime": {
+      "explainer_library": "lime",
+      "explainer_type": "LimeTabularExplainer",
+      "num_samples_per_instance": 1000,
+      "num_features_per_instance": 50,
+      "discretize_continuous": true,
+      "background_data_source": "X_train_balanced"
+    }
+  },
+  "protocol_deviations": [],
+  "runs_covered": [
+    {
+      "domain": "healthcare",
+      "dataset_name": "pima_diabetes",
+      "model_name": "rf",
+      "generated_at_utc": "2026-07-12T20:09:48.464268Z"
+    },
+    {
+      "domain": "healthcare",
+      "dataset_name": "pima_diabetes",
+      "model_name": "xgb",
+      "generated_at_utc": "2026-07-12T20:09:52.346489Z"
+    },
+    {
+      "domain": "healthcare",
+      "dataset_name": "breast_cancer_wisconsin",
+      "model_name": "rf",
+      "generated_at_utc": "2026-07-12T20:10:00.594135Z"
+    },
+    {
+      "domain": "healthcare",
+      "dataset_name": "breast_cancer_wisconsin",
+      "model_name": "xgb",
+      "generated_at_utc": "2026-07-12T20:10:09.658093Z"
+    },
+    {
+      "domain": "healthcare",
+      "dataset_name": "heart_disease_uci",
+      "model_name": "rf",
+      "generated_at_utc": "2026-07-12T20:10:30.330222Z"
+    },
+    {
+      "domain": "healthcare",
+      "dataset_name": "heart_disease_uci",
+      "model_name": "xgb",
+      "generated_at_utc": "2026-07-12T20:10:41.557609Z"
+    },
+    {
+      "domain": "finance",
+      "dataset_name": "loan_default",
+      "model_name": "rf",
+      "generated_at_utc": "2026-07-12T20:33:18.399408Z"
+    },
+    {
+      "domain": "finance",
+      "dataset_name": "loan_default",
+      "model_name": "xgb",
+      "generated_at_utc": "2026-07-12T20:33:57.575410Z"
+    },
+    {
+      "domain": "finance",
+      "dataset_name": "financial_distress",
+      "model_name": "rf",
+      "generated_at_utc": "2026-07-12T20:37:15.975468Z"
+    },
+    {
+      "domain": "finance",
+      "dataset_name": "financial_distress",
+      "model_name": "xgb",
+      "generated_at_utc": "2026-07-12T20:38:57.228616Z"
+    },
+    {
+      "domain": "finance",
+      "dataset_name": "credit_card_fraud_2023",
+      "model_name": "rf",
+      "generated_at_utc": "2026-07-12T20:42:04.257518Z"
+    },
+    {
+      "domain": "finance",
+      "dataset_name": "credit_card_fraud_2023",
+      "model_name": "xgb",
+      "generated_at_utc": "2026-07-12T20:42:37.611995Z"
+    }
+  ],
+  "created_at_utc": "2026-07-12T20:09:48.464268Z",
+  "last_updated_utc": "2026-07-12T20:42:37.611995Z"
+}

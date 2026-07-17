@@ -1,0 +1,81 @@
+PREPROCESSING LOG
+============================================================
+
+------------------------------------------------------------
+1. CONFIGURATION
+------------------------------------------------------------
+{
+  "dataset_name": "pima_diabetes",
+  "domain": "healthcare",
+  "model_type": "rf",
+  "datasets_root": "../Datasets",
+  "models_root": "../Models",
+  "search_sample_size": 5000,
+  "push_to_hub": true,
+  "hub_repo_id": "cike-dev/xai-pima-diabetes-rf",
+  "param_distributions": "see DEFAULT_PARAM_SPACES / config"
+}
+target not given in config -- read 'Outcome' from dataset_info.json
+
+------------------------------------------------------------
+2. LOAD ARTIFACTS
+------------------------------------------------------------
+Loaded pre-balance train: (614, 8)
+Loaded balanced train:    (800, 8)
+Loaded test:               (154, 8)
+Feature columns (8): ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
+Fitted transformers bundle found: True
+
+------------------------------------------------------------
+3. HYPERPARAMETER SEARCH
+------------------------------------------------------------
+model_type: rf
+search_method: RandomizedSearchCV, n_iter=50
+cv: StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+scoring: roc_auc
+param_distributions: {'clf__n_estimators': <scipy.stats._distn_infrastructure.rv_discrete_frozen object at 0x0000029578003230>, 'clf__max_depth': [5, 10, 15, 20, 30], 'clf__min_samples_split': <scipy.stats._distn_infrastructure.rv_discrete_frozen object at 0x00000295783CEE90>, 'clf__max_features': ['sqrt', 'log2', None]}
+
+About to fit 5 folds x 50 candidates = 250 total fits. verbose output below will print each fit's progress as it happens (not silent).
+
+Search completed in 50.3s
+Best CV roc_auc: 0.8421
+Best params (pipeline-prefixed): {'clf__max_depth': 5, 'clf__max_features': 'log2', 'clf__min_samples_split': 18, 'clf__n_estimators': 151}
+
+------------------------------------------------------------
+4. REFIT FINAL MODEL
+------------------------------------------------------------
+Refitting on full balanced training set with params: {'max_depth': 5, 'max_features': 'log2', 'min_samples_split': 18, 'n_estimators': 151}
+Final refit completed in 0.26s on 800 rows
+
+------------------------------------------------------------
+5. HELD-OUT TEST EVALUATION
+------------------------------------------------------------
+Test metrics:
+  accuracy: 0.7013
+  precision: 0.5526
+  recall: 0.7778
+  f1: 0.6462
+  roc_auc: 0.8176
+  pr_auc: 0.7004
+Confusion matrix:
+[[66 34]
+ [12 42]]
+
+------------------------------------------------------------
+6. FIGURES
+------------------------------------------------------------
+[FIGURE SAVED] fig_confusion_matrix.png  |  caption: Confusion matrix on the held-out test set.
+[FIGURE SAVED] fig_roc_curve.png  |  caption: ROC curve on the held-out test set.
+[FIGURE SAVED] fig_precision_recall_curve.png  |  caption: Precision-Recall curve on the held-out test set.
+[FIGURE SAVED] fig_hyperparameter_search_scores.png  |  caption: Distribution of mean CV roc_auc across all RandomizedSearchCV candidates (dashed line = best candidate).
+[FIGURE SAVED] fig_baseline_feature_importance.png  |  caption: RF built-in feature importance (Gini/gain), top 20 features -- a sanity-check baseline, not a SHAP/LIME explanation.
+
+------------------------------------------------------------
+7. SAVE MODEL ARTIFACT + SCHEMA
+------------------------------------------------------------
+Saved model (skops): ../Models\healthcare\pima_diabetes\rf\model\model.skops
+Saved feature schema: ../Models\healthcare\pima_diabetes\rf\model\feature_schema.json
+
+------------------------------------------------------------
+9. PUSH TO HUGGING FACE HUB
+------------------------------------------------------------

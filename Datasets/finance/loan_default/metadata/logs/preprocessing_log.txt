@@ -1,0 +1,220 @@
+PREPROCESSING LOG
+============================================================
+CONFIG: {'dataset_name': 'loan_default', 'domain': 'finance', 'source': 'Kaggle: nikhil1e9/loan-default (mirror: https://raw.githubusercontent.com/f-kuzey-edes-huyal/loan_default_prediction/main/Loan_default.csv)', 'data_path': 'https://raw.githubusercontent.com/f-kuzey-edes-huyal/loan_default_prediction/main/Loan_default.csv', 'column_names': None, 'target': 'Default', 'drop_columns': ['LoanID'], 'target_mapping': None, 'zero_as_missing_cols': None, 'random_state': 42, 'test_size': 0.2, 'imputation_strategy_num': 'median', 'imputation_strategy_cat': 'most_frequent', 'scaler': 'StandardScaler', 'balancing': 'SMOTE', 'high_missingness_warn_threshold': 0.4, 'feature_descriptions': {'Age': 'Applicant age in years', 'Income': 'Annual income (currency units as provided by source)', 'LoanAmount': 'Requested/approved loan amount', 'CreditScore': 'Credit score at time of application', 'MonthsEmployed': 'Months employed at current job', 'NumCreditLines': 'Number of open credit lines', 'InterestRate': 'Interest rate on the loan (%)', 'LoanTerm': 'Loan term in months', 'DTIRatio': 'Debt-to-income ratio', 'Education': "Highest education level (High School/Bachelor's/Master's/PhD)", 'EmploymentType': 'Employment status (Full-time/Part-time/Self-employed/Unemployed)', 'MaritalStatus': 'Marital status (Single/Married/Divorced)', 'HasMortgage': 'Whether the applicant currently has a mortgage (Yes/No)', 'HasDependents': 'Whether the applicant has dependents (Yes/No)', 'LoanPurpose': 'Stated purpose of the loan (Auto/Business/Education/Home/Other)', 'HasCoSigner': 'Whether the loan has a co-signer (Yes/No)', 'Default': 'Loan default indicator (0 = repaid, 1 = defaulted)'}, 'datasets_root': '../Datasets'}
+
+------------------------------------------------------------
+2. DATASET LOADING
+------------------------------------------------------------
+Loaded from: https://raw.githubusercontent.com/f-kuzey-edes-huyal/loan_default_prediction/main/Loan_default.csv
+Shape: 255347 rows x 18 columns
+Raw data cached to: ../Datasets\finance\loan_default\raw\loan_default_raw.csv
+Dropped non-feature columns: ['LoanID']
+
+------------------------------------------------------------
+3. INITIAL INSPECTION
+------------------------------------------------------------
+Age                 int64
+Income              int64
+LoanAmount          int64
+CreditScore         int64
+MonthsEmployed      int64
+NumCreditLines      int64
+InterestRate      float64
+LoanTerm            int64
+DTIRatio          float64
+Education          object
+EmploymentType     object
+MaritalStatus      object
+HasMortgage        object
+HasDependents      object
+LoanPurpose        object
+HasCoSigner        object
+Default             int64
+
+Descriptive statistics:
+                   count unique         top    freq           mean           std      min      25%       50%       75%       max
+Age             255347.0    NaN         NaN     NaN      43.498306     14.990258     18.0     31.0      43.0      56.0      69.0
+Income          255347.0    NaN         NaN     NaN   82499.304597  38963.013729  15000.0  48825.5   82466.0  116219.0  149999.0
+LoanAmount      255347.0    NaN         NaN     NaN  127578.865512  70840.706142   5000.0  66156.0  127556.0  188985.0  249999.0
+CreditScore     255347.0    NaN         NaN     NaN     574.264346    158.903867    300.0    437.0     574.0     712.0     849.0
+MonthsEmployed  255347.0    NaN         NaN     NaN      59.541976     34.643376      0.0     30.0      60.0      90.0     119.0
+NumCreditLines  255347.0    NaN         NaN     NaN       2.501036      1.117018      1.0      2.0       2.0       3.0       4.0
+InterestRate    255347.0    NaN         NaN     NaN      13.492773      6.636443      2.0     7.77     13.46     19.25      25.0
+LoanTerm        255347.0    NaN         NaN     NaN      36.025894      16.96933     12.0     24.0      36.0      48.0      60.0
+DTIRatio        255347.0    NaN         NaN     NaN       0.500212      0.230917      0.1      0.3       0.5       0.7       0.9
+Education         255347      4  Bachelor's   64366            NaN           NaN      NaN      NaN       NaN       NaN       NaN
+EmploymentType    255347      4   Part-time   64161            NaN           NaN      NaN      NaN       NaN       NaN       NaN
+MaritalStatus     255347      3     Married   85302            NaN           NaN      NaN      NaN       NaN       NaN       NaN
+HasMortgage       255347      2         Yes  127677            NaN           NaN      NaN      NaN       NaN       NaN       NaN
+HasDependents     255347      2         Yes  127742            NaN           NaN      NaN      NaN       NaN       NaN       NaN
+LoanPurpose       255347      5    Business   51298            NaN           NaN      NaN      NaN       NaN       NaN       NaN
+HasCoSigner       255347      2         Yes  127701            NaN           NaN      NaN      NaN       NaN       NaN       NaN
+Default         255347.0    NaN         NaN     NaN       0.116128      0.320379      0.0      0.0       0.0       0.0       1.0
+
+Total missing cells: 0
+Duplicate rows: 0
+
+------------------------------------------------------------
+4. DATA QUALITY ASSESSMENT
+------------------------------------------------------------
+Duplicate rows found: 0 (removed: 0)
+
+Missingness summary (after sentinel recoding):
+                missing_count  missing_pct
+Age                         0          0.0
+CreditScore                 0          0.0
+DTIRatio                    0          0.0
+Default                     0          0.0
+Education                   0          0.0
+EmploymentType              0          0.0
+HasCoSigner                 0          0.0
+HasDependents               0          0.0
+HasMortgage                 0          0.0
+Income                      0          0.0
+InterestRate                0          0.0
+LoanAmount                  0          0.0
+LoanPurpose                 0          0.0
+LoanTerm                    0          0.0
+MaritalStatus               0          0.0
+MonthsEmployed              0          0.0
+NumCreditLines              0          0.0
+
+Numerical columns: ['Age', 'Income', 'LoanAmount', 'CreditScore', 'MonthsEmployed', 'NumCreditLines', 'InterestRate', 'LoanTerm', 'DTIRatio']
+Categorical columns: ['Education', 'EmploymentType', 'MaritalStatus', 'HasMortgage', 'HasDependents', 'LoanPurpose', 'HasCoSigner']
+
+------------------------------------------------------------
+DESCRIPTIVE VISUALIZATIONS
+------------------------------------------------------------
+[FIGURE SAVED] fig_missing_value_pattern_heatmap.png  |  caption: Heatmap of missing values across all records after sentinel-value recoding, prior to imputation.
+[FIGURE SAVED] fig_feature_distributions_observed_values.png  |  caption: Histograms with kernel density estimates for numerical features, computed on observed (non-missing) values.
+[FIGURE SAVED] fig_pearson_correlation_heatmap.png  |  caption: Pearson correlation matrix across numerical features and the target variable.
+[FIGURE SAVED] fig_class_balance_target.png  |  caption: Class balance of the target variable Default in the full (pre-split) dataset.
+
+------------------------------------------------------------
+5. TRAIN/TEST SPLIT
+------------------------------------------------------------
+Train: 204277 rows | Test: 51070 rows
+Stratified on target: True
+
+------------------------------------------------------------
+6. MISSING VALUE HANDLING
+------------------------------------------------------------
+Numerical imputation strategy: median (fit on train only)
+Age                   44.00
+Income             82519.00
+LoanAmount        127400.00
+CreditScore          574.00
+MonthsEmployed        60.00
+NumCreditLines         3.00
+InterestRate          13.45
+LoanTerm              36.00
+DTIRatio               0.50
+
+Categorical imputation strategy: most_frequent (fit on train only)
+Education         Bachelor's
+EmploymentType     Part-time
+MaritalStatus        Married
+HasMortgage              Yes
+HasDependents            Yes
+LoanPurpose         Business
+HasCoSigner              Yes
+
+Remaining missing values after imputation: 0
+
+------------------------------------------------------------
+7. ENCODING
+------------------------------------------------------------
+One-hot encoded columns: ['Education', 'EmploymentType', 'MaritalStatus', 'HasMortgage', 'HasDependents', 'LoanPurpose', 'HasCoSigner']
+Resulting encoded feature columns: ["Education_Bachelor's", 'Education_High School', "Education_Master's", 'Education_PhD', 'EmploymentType_Full-time', 'EmploymentType_Part-time', 'EmploymentType_Self-employed', 'EmploymentType_Unemployed', 'MaritalStatus_Divorced', 'MaritalStatus_Married', 'MaritalStatus_Single', 'HasMortgage_No', 'HasMortgage_Yes', 'HasDependents_No', 'HasDependents_Yes', 'LoanPurpose_Auto', 'LoanPurpose_Business', 'LoanPurpose_Education', 'LoanPurpose_Home', 'LoanPurpose_Other', 'HasCoSigner_No', 'HasCoSigner_Yes']
+
+------------------------------------------------------------
+8. OUTLIER ANALYSIS (documented only, not removed)
+------------------------------------------------------------
+                n_outliers_iqr  lower_bound  upper_bound
+feature                                                 
+Age                          0        -6.50        93.50
+Income                       0    -52229.50    217294.50
+LoanAmount                   0   -118611.50    373640.50
+CreditScore                  0        24.50      1124.50
+MonthsEmployed               0       -60.00       180.00
+NumCreditLines               0        -1.00         7.00
+InterestRate                 0        -9.46        36.46
+LoanTerm                     0       -12.00        84.00
+DTIRatio                     0        -0.30         1.30
+
+Note: outliers are documented for review only; no rows were removed. Automatic removal is avoided here to preserve interpretability for downstream XAI analysis (SHAP/LIME).
+[FIGURE SAVED] fig_outlier_boxplots_train_set.png  |  caption: Boxplots of all numerical training-set features used for IQR-based outlier screening (outliers documented, not removed).
+
+------------------------------------------------------------
+9. SCALING
+------------------------------------------------------------
+Scaler: StandardScaler (fit on train only)
+                         mean         scale
+Age                 43.508716     14.989941
+Income           82530.595393  38971.415739
+LoanAmount      127523.946225  70876.077336
+CreditScore        574.376616    158.910001
+MonthsEmployed      59.578420     34.664911
+NumCreditLines       2.501892      1.116966
+InterestRate        13.488165      6.638203
+LoanTerm            35.991188     16.973842
+DTIRatio             0.500504      0.231004
+
+------------------------------------------------------------
+10. CLASS IMBALANCE HANDLING
+------------------------------------------------------------
+Class balance before:
+Default
+0    88.39
+1    11.61
+
+Applied SMOTE (train set only; test set untouched).
+Class balance after:
+Default
+0    50.0
+1    50.0
+
+------------------------------------------------------------
+11. SAVE PROCESSED DATA
+------------------------------------------------------------
+Saved: ../Datasets\finance\loan_default\processed\data\X_train_prebalance.csv
+Saved: ../Datasets\finance\loan_default\processed\data\y_train_prebalance.csv
+Saved: ../Datasets\finance\loan_default\processed\data\X_train_balanced.csv
+Saved: ../Datasets\finance\loan_default\processed\data\y_train_balanced.csv
+Saved: ../Datasets\finance\loan_default\processed\data\X_test.csv
+Saved: ../Datasets\finance\loan_default\processed\data\y_test.csv
+
+Note: 'prebalance' = post impute/encode/scale, pre-SMOTE (use this for CV-based hyperparameter search, resampling inside each fold). 'balanced' = full SMOTE-applied training set (use this for the final refit with the chosen hyperparameters).
+
+------------------------------------------------------------
+11b. SAVE FITTED TRANSFORMERS
+------------------------------------------------------------
+Saved fitted imputer/encoder/scaler bundle: ../Datasets\finance\loan_default\metadata\fitted_transformers.joblib
+
+========================================
+DATASET: loan_default
+DOMAIN: finance
+
+Samples: 255347
+Features: 16
+
+Missing Values (pre-imputation): 0
+Duplicates Removed: 0
+
+Train Size (before balancing): 204277
+Train Size (after balancing): 361110
+Test Size: 51070
+
+Scaling: StandardScaler
+Imputation: median
+
+Class Balance Before:
+  0 = 88.4%
+  1 = 11.6%
+
+Class Balance After:
+  0 = 50.0%
+  1 = 50.0%
+
+Balancing: SMOTE
+========================================

@@ -1,0 +1,4 @@
+FIGURE CAPTIONS (filename -> caption)
+============================================================
+case1.png: Standard LIME local explanation for a correctly classified test instance (y_true=0, y_pred=0, p(class 1)=0.000).
+case2.png: Standard LIME local explanation for a incorrectly classified test instance (y_true=1, y_pred=0, p(class 1)=0.003).

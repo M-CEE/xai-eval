@@ -1,0 +1,316 @@
+PREPROCESSING LOG
+============================================================
+CONFIG: {'dataset_name': 'breast_cancer_wisconsin', 'domain': 'healthcare', 'source': 'Kaggle: uciml/breast-cancer-wisconsin-data (UCI Breast Cancer Wisconsin Diagnostic)', 'data_path': 'https://raw.githubusercontent.com/sharmaroshan/Breast-Cancer-Wisconsin/master/wisconsin.csv', 'column_names': None, 'target': 'diagnosis', 'drop_columns': ['id', 'Unnamed: 32'], 'target_mapping': {'M': 1, 'B': 0}, 'zero_as_missing_cols': None, 'random_state': 42, 'test_size': 0.2, 'imputation_strategy_num': 'median', 'imputation_strategy_cat': 'most_frequent', 'scaler': 'StandardScaler', 'balancing': 'SMOTE', 'feature_descriptions': {'radius_mean': 'Mean of distances from center to points on the perimeter', 'texture_mean': 'Standard deviation of gray-scale values', 'perimeter_mean': 'Mean perimeter of the cell nuclei', 'area_mean': 'Mean area of the cell nuclei', 'diagnosis': 'Diagnosis (1 = malignant, 0 = benign)'}, 'datasets_root': '../Datasets'}
+
+------------------------------------------------------------
+2. DATASET LOADING
+------------------------------------------------------------
+Loaded from: https://raw.githubusercontent.com/sharmaroshan/Breast-Cancer-Wisconsin/master/wisconsin.csv
+Shape: 569 rows x 33 columns
+Raw data cached to: ../Datasets\healthcare\breast_cancer_wisconsin\raw\breast_cancer_wisconsin_raw.csv
+Dropped non-feature columns: ['id', 'Unnamed: 32']
+Applied target_mapping to 'diagnosis': {'M': 1, 'B': 0}
+
+------------------------------------------------------------
+3. INITIAL INSPECTION
+------------------------------------------------------------
+diagnosis                    int64
+radius_mean                float64
+texture_mean               float64
+perimeter_mean             float64
+area_mean                  float64
+smoothness_mean            float64
+compactness_mean           float64
+concavity_mean             float64
+concave points_mean        float64
+symmetry_mean              float64
+fractal_dimension_mean     float64
+radius_se                  float64
+texture_se                 float64
+perimeter_se               float64
+area_se                    float64
+smoothness_se              float64
+compactness_se             float64
+concavity_se               float64
+concave points_se          float64
+symmetry_se                float64
+fractal_dimension_se       float64
+radius_worst               float64
+texture_worst              float64
+perimeter_worst            float64
+area_worst                 float64
+smoothness_worst           float64
+compactness_worst          float64
+concavity_worst            float64
+concave points_worst       float64
+symmetry_worst             float64
+fractal_dimension_worst    float64
+
+Descriptive statistics:
+                         count        mean         std         min         25%         50%          75%         max
+diagnosis                569.0    0.372583    0.483918    0.000000    0.000000    0.000000     1.000000     1.00000
+radius_mean              569.0   14.127292    3.524049    6.981000   11.700000   13.370000    15.780000    28.11000
+texture_mean             569.0   19.289649    4.301036    9.710000   16.170000   18.840000    21.800000    39.28000
+perimeter_mean           569.0   91.969033   24.298981   43.790000   75.170000   86.240000   104.100000   188.50000
+area_mean                569.0  654.889104  351.914129  143.500000  420.300000  551.100000   782.700000  2501.00000
+smoothness_mean          569.0    0.096360    0.014064    0.052630    0.086370    0.095870     0.105300     0.16340
+compactness_mean         569.0    0.104341    0.052813    0.019380    0.064920    0.092630     0.130400     0.34540
+concavity_mean           569.0    0.088799    0.079720    0.000000    0.029560    0.061540     0.130700     0.42680
+concave points_mean      569.0    0.048919    0.038803    0.000000    0.020310    0.033500     0.074000     0.20120
+symmetry_mean            569.0    0.181162    0.027414    0.106000    0.161900    0.179200     0.195700     0.30400
+fractal_dimension_mean   569.0    0.062798    0.007060    0.049960    0.057700    0.061540     0.066120     0.09744
+radius_se                569.0    0.405172    0.277313    0.111500    0.232400    0.324200     0.478900     2.87300
+texture_se               569.0    1.216853    0.551648    0.360200    0.833900    1.108000     1.474000     4.88500
+perimeter_se             569.0    2.866059    2.021855    0.757000    1.606000    2.287000     3.357000    21.98000
+area_se                  569.0   40.337079   45.491006    6.802000   17.850000   24.530000    45.190000   542.20000
+smoothness_se            569.0    0.007041    0.003003    0.001713    0.005169    0.006380     0.008146     0.03113
+compactness_se           569.0    0.025478    0.017908    0.002252    0.013080    0.020450     0.032450     0.13540
+concavity_se             569.0    0.031894    0.030186    0.000000    0.015090    0.025890     0.042050     0.39600
+concave points_se        569.0    0.011796    0.006170    0.000000    0.007638    0.010930     0.014710     0.05279
+symmetry_se              569.0    0.020542    0.008266    0.007882    0.015160    0.018730     0.023480     0.07895
+fractal_dimension_se     569.0    0.003795    0.002646    0.000895    0.002248    0.003187     0.004558     0.02984
+radius_worst             569.0   16.269190    4.833242    7.930000   13.010000   14.970000    18.790000    36.04000
+texture_worst            569.0   25.677223    6.146258   12.020000   21.080000   25.410000    29.720000    49.54000
+perimeter_worst          569.0  107.261213   33.602542   50.410000   84.110000   97.660000   125.400000   251.20000
+area_worst               569.0  880.583128  569.356993  185.200000  515.300000  686.500000  1084.000000  4254.00000
+smoothness_worst         569.0    0.132369    0.022832    0.071170    0.116600    0.131300     0.146000     0.22260
+compactness_worst        569.0    0.254265    0.157336    0.027290    0.147200    0.211900     0.339100     1.05800
+concavity_worst          569.0    0.272188    0.208624    0.000000    0.114500    0.226700     0.382900     1.25200
+concave points_worst     569.0    0.114606    0.065732    0.000000    0.064930    0.099930     0.161400     0.29100
+symmetry_worst           569.0    0.290076    0.061867    0.156500    0.250400    0.282200     0.317900     0.66380
+fractal_dimension_worst  569.0    0.083946    0.018061    0.055040    0.071460    0.080040     0.092080     0.20750
+
+Total missing cells: 0
+Duplicate rows: 0
+
+------------------------------------------------------------
+4. DATA QUALITY ASSESSMENT
+------------------------------------------------------------
+Duplicate rows found: 0 (removed: 0)
+
+Missingness summary (after sentinel recoding):
+                         missing_count  missing_pct
+area_mean                            0          0.0
+area_se                              0          0.0
+area_worst                           0          0.0
+compactness_mean                     0          0.0
+compactness_se                       0          0.0
+compactness_worst                    0          0.0
+concave points_mean                  0          0.0
+concave points_se                    0          0.0
+concave points_worst                 0          0.0
+concavity_mean                       0          0.0
+concavity_se                         0          0.0
+concavity_worst                      0          0.0
+diagnosis                            0          0.0
+fractal_dimension_mean               0          0.0
+fractal_dimension_se                 0          0.0
+fractal_dimension_worst              0          0.0
+perimeter_mean                       0          0.0
+perimeter_se                         0          0.0
+perimeter_worst                      0          0.0
+radius_mean                          0          0.0
+radius_se                            0          0.0
+radius_worst                         0          0.0
+smoothness_mean                      0          0.0
+smoothness_se                        0          0.0
+smoothness_worst                     0          0.0
+symmetry_mean                        0          0.0
+symmetry_se                          0          0.0
+symmetry_worst                       0          0.0
+texture_mean                         0          0.0
+texture_se                           0          0.0
+texture_worst                        0          0.0
+
+Numerical columns: ['radius_mean', 'texture_mean', 'perimeter_mean', 'area_mean', 'smoothness_mean', 'compactness_mean', 'concavity_mean', 'concave points_mean', 'symmetry_mean', 'fractal_dimension_mean', 'radius_se', 'texture_se', 'perimeter_se', 'area_se', 'smoothness_se', 'compactness_se', 'concavity_se', 'concave points_se', 'symmetry_se', 'fractal_dimension_se', 'radius_worst', 'texture_worst', 'perimeter_worst', 'area_worst', 'smoothness_worst', 'compactness_worst', 'concavity_worst', 'concave points_worst', 'symmetry_worst', 'fractal_dimension_worst']
+Categorical columns: []
+
+------------------------------------------------------------
+DESCRIPTIVE VISUALIZATIONS
+------------------------------------------------------------
+[FIGURE SAVED] fig_missing_value_pattern_heatmap.png  |  caption: Heatmap of missing values across all records after sentinel-value recoding, prior to imputation.
+[FIGURE SAVED] fig_feature_distributions_observed_values.png  |  caption: Histograms with kernel density estimates for numerical features, computed on observed (non-missing) values.
+[FIGURE SAVED] fig_pearson_correlation_heatmap.png  |  caption: Pearson correlation matrix across numerical features and the target variable.
+[FIGURE SAVED] fig_class_balance_target.png  |  caption: Class balance of the target variable diagnosis in the full (pre-split) dataset.
+
+------------------------------------------------------------
+5. TRAIN/TEST SPLIT
+------------------------------------------------------------
+Train: 455 rows | Test: 114 rows
+Stratified on target: True
+
+------------------------------------------------------------
+6. MISSING VALUE HANDLING
+------------------------------------------------------------
+Numerical imputation strategy: median (fit on train only)
+radius_mean                 13.340000
+texture_mean                18.900000
+perimeter_mean              86.180000
+area_mean                  546.400000
+smoothness_mean              0.095240
+compactness_mean             0.092280
+concavity_mean               0.059400
+concave points_mean          0.033340
+symmetry_mean                0.179900
+fractal_dimension_mean       0.061300
+radius_se                    0.327400
+texture_se                   1.139000
+perimeter_se                 2.310000
+area_se                     24.870000
+smoothness_se                0.006261
+compactness_se               0.020160
+concavity_se                 0.025860
+concave points_se            0.010910
+symmetry_se                  0.018700
+fractal_dimension_se         0.003131
+radius_worst                14.920000
+texture_worst               25.480000
+perimeter_worst             97.650000
+area_worst                 683.400000
+smoothness_worst             0.131100
+compactness_worst            0.216700
+concavity_worst              0.229800
+concave points_worst         0.101000
+symmetry_worst               0.282300
+fractal_dimension_worst      0.080090
+
+Remaining missing values after imputation: 0
+
+------------------------------------------------------------
+7. ENCODING
+------------------------------------------------------------
+No categorical columns present -- encoding step skipped.
+
+------------------------------------------------------------
+8. OUTLIER ANALYSIS (documented only, not removed)
+------------------------------------------------------------
+                         n_outliers_iqr  lower_bound  upper_bound
+feature                                                          
+radius_mean                          11     5.372500    22.272500
+texture_mean                          5     8.092500    30.072500
+perimeter_mean                       12    31.337500   148.397500
+area_mean                            20  -142.250000  1358.150000
+smoothness_mean                       5     0.055475     0.134555
+compactness_mean                     14    -0.036187     0.230272
+concavity_mean                       17    -0.124500     0.286220
+concave points_mean                   9    -0.061900     0.155660
+symmetry_mean                        13     0.112025     0.245425
+fractal_dimension_mean               12     0.044532     0.079473
+radius_se                            31    -0.143375     0.862025
+texture_se                           15    -0.108750     2.426050
+perimeter_se                         34    -1.042750     6.039250
+area_se                              53   -23.447500    86.692500
+smoothness_se                        20     0.000631     0.012485
+compactness_se                       24    -0.015530     0.060590
+concavity_se                         24    -0.023178     0.078723
+concave points_se                    17    -0.002876     0.024942
+symmetry_se                          22     0.003030     0.034990
+fractal_dimension_se                 23    -0.001200     0.007918
+radius_worst                         10     3.772500    28.432500
+texture_worst                         3     8.425000    43.265000
+perimeter_worst                      12    19.837500   191.297500
+area_worst                           21  -393.375000  2032.025000
+smoothness_worst                      3     0.066475     0.194675
+compactness_worst                    15    -0.137775     0.623625
+concavity_worst                      11    -0.280175     0.785225
+concave points_worst                  0    -0.082962     0.309137
+symmetry_worst                       20     0.149950     0.419950
+fractal_dimension_worst              18     0.040285     0.123165
+
+Note: outliers are documented for review only; no rows were removed. Automatic removal is avoided here to preserve interpretability for downstream XAI analysis (SHAP/LIME).
+[FIGURE SAVED] fig_outlier_boxplots_train_set.png  |  caption: Boxplots of all numerical training-set features used for IQR-based outlier screening (outliers documented, not removed).
+
+------------------------------------------------------------
+9. SCALING
+------------------------------------------------------------
+Scaler: StandardScaler (fit on train only)
+                               mean       scale
+radius_mean               14.166077    3.575146
+texture_mean              19.417692    4.285935
+perimeter_mean            92.215868   24.689941
+area_mean                659.578242  360.022403
+smoothness_mean            0.095993    0.014294
+compactness_mean           0.103835    0.053851
+concavity_mean             0.089184    0.081608
+concave points_mean        0.049015    0.039642
+symmetry_mean              0.181497    0.027616
+fractal_dimension_mean     0.062715    0.006963
+radius_se                  0.411187    0.289864
+texture_se                 1.217882    0.551705
+perimeter_se               2.911569    2.120785
+area_se                   41.279103   48.330976
+smoothness_se              0.006895    0.002851
+compactness_se             0.025323    0.017605
+concavity_se               0.032018    0.031694
+concave points_se          0.011691    0.006282
+symmetry_se                0.020427    0.008301
+fractal_dimension_se       0.003766    0.002629
+radius_worst              16.351514    4.895648
+texture_worst             25.904879    6.072847
+perimeter_worst          107.860484   34.138443
+area_worst               890.569231  581.705888
+smoothness_worst           0.132083    0.023455
+compactness_worst          0.255529    0.158226
+concavity_worst            0.275166    0.211833
+concave points_worst       0.115491    0.066770
+symmetry_worst             0.291364    0.062974
+fractal_dimension_worst    0.084124    0.018149
+
+------------------------------------------------------------
+10. CLASS IMBALANCE HANDLING
+------------------------------------------------------------
+Class balance before:
+diagnosis
+0    62.64
+1    37.36
+
+Applied SMOTE (train set only; test set untouched).
+Class balance after:
+diagnosis
+1    50.0
+0    50.0
+
+------------------------------------------------------------
+11. SAVE PROCESSED DATA
+------------------------------------------------------------
+Saved: ../Datasets\healthcare\breast_cancer_wisconsin\processed\data\X_train_prebalance.csv
+Saved: ../Datasets\healthcare\breast_cancer_wisconsin\processed\data\y_train_prebalance.csv
+Saved: ../Datasets\healthcare\breast_cancer_wisconsin\processed\data\X_train_balanced.csv
+Saved: ../Datasets\healthcare\breast_cancer_wisconsin\processed\data\y_train_balanced.csv
+Saved: ../Datasets\healthcare\breast_cancer_wisconsin\processed\data\X_test.csv
+Saved: ../Datasets\healthcare\breast_cancer_wisconsin\processed\data\y_test.csv
+
+Note: 'prebalance' = post impute/encode/scale, pre-SMOTE (use this for CV-based hyperparameter search, resampling inside each fold). 'balanced' = full SMOTE-applied training set (use this for the final refit with the chosen hyperparameters).
+
+------------------------------------------------------------
+11b. SAVE FITTED TRANSFORMERS
+------------------------------------------------------------
+Saved fitted imputer/encoder/scaler bundle: ../Datasets\healthcare\breast_cancer_wisconsin\metadata\fitted_transformers.joblib
+
+========================================
+DATASET: breast_cancer_wisconsin
+DOMAIN: healthcare
+
+Samples: 569
+Features: 30
+
+Missing Values (pre-imputation): 0
+Duplicates Removed: 0
+
+Train Size (before balancing): 455
+Train Size (after balancing): 570
+Test Size: 114
+
+Scaling: StandardScaler
+Imputation: median
+
+Class Balance Before:
+  0 = 62.6%
+  1 = 37.4%
+
+Class Balance After:
+  1 = 50.0%
+  0 = 50.0%
+
+Balancing: SMOTE
+========================================

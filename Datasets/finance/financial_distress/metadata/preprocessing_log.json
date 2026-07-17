@@ -1,0 +1,39 @@
+{
+  "dataset_name": "financial_distress",
+  "domain": "finance",
+  "source": "Kaggle: shebrahimi/financial-distress",
+  "data_path": "C:\\Users\\Offic\\Downloads\\pima_template_project_v3_updated (1)\\Datasets\\finance\\financial_distress\\raw\\Financial Distress.csv",
+  "column_names": null,
+  "target": "Financial Distress",
+  "drop_columns": [
+    "Company"
+  ],
+  "target_binarize": {
+    "threshold": -0.5,
+    "positive_if": "leq"
+  },
+  "target_mapping": null,
+  "zero_as_missing_cols": null,
+  "random_state": 42,
+  "test_size": 0.2,
+  "imputation_strategy_num": "median",
+  "imputation_strategy_cat": "most_frequent",
+  "scaler": "StandardScaler",
+  "balancing": "SMOTE",
+  "high_missingness_warn_threshold": 0.4,
+  "feature_descriptions": {
+    "Time": "Fiscal period index for the company (1-14, anonymized time unit)",
+    "Financial Distress": "Continuous distress score; binarized to 0=healthy (>-0.50), 1=distressed (<=-0.50)"
+  },
+  "datasets_root": "../Datasets",
+  "runtime": {
+    "n_duplicates_removed": 2,
+    "missing_before_imputation": 0,
+    "train_rows": 2936,
+    "test_rows": 734,
+    "train_rows_after_balancing": 5656,
+    "prebalance_train_file": "X_train_prebalance.csv",
+    "balanced_train_file": "X_train_balanced.csv",
+    "fitted_transformers_file": "fitted_transformers.joblib"
+  }
+}

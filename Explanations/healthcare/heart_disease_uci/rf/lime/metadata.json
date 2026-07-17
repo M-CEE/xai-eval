@@ -1,0 +1,87 @@
+{
+  "explainer_library": "lime",
+  "explainer_type": "LimeTabularExplainer",
+  "lime_version": "unknown",
+  "mode": "classification",
+  "discretize_continuous": true,
+  "num_samples_per_instance": 1000,
+  "num_features_per_instance": 25,
+  "background_data_source": "X_train_balanced",
+  "background_data_rows": 812,
+  "n_instances_explained": 184,
+  "instance_selection_random_state": 42,
+  "lime_random_state": 42,
+  "dataset_characteristics": {
+    "dataset_name": "heart_disease_uci",
+    "domain": "healthcare",
+    "n_features": 25,
+    "feature_names": [
+      "age",
+      "trestbps",
+      "chol",
+      "thalch",
+      "oldpeak",
+      "ca",
+      "sex_Female",
+      "sex_Male",
+      "cp_asymptomatic",
+      "cp_atypical angina",
+      "cp_non-anginal",
+      "cp_typical angina",
+      "fbs_False",
+      "fbs_True",
+      "restecg_lv hypertrophy",
+      "restecg_normal",
+      "restecg_st-t abnormality",
+      "exang_False",
+      "exang_True",
+      "slope_downsloping",
+      "slope_flat",
+      "slope_upsloping",
+      "thal_fixed defect",
+      "thal_normal",
+      "thal_reversable defect"
+    ],
+    "n_test_total": 184,
+    "n_train_balanced_total": 812,
+    "test_class_distribution": {
+      "0": 0.44565217391304346,
+      "1": 0.5543478260869565
+    }
+  },
+  "model_reference": {
+    "dataset_name": "heart_disease_uci",
+    "domain": "healthcare",
+    "model_type": "rf",
+    "model_name": "rf",
+    "model_path": "../Models\\healthcare\\heart_disease_uci\\rf\\model\\model.skops",
+    "training_random_state": 42,
+    "training_scoring": "roc_auc",
+    "best_hyperparameters": {
+      "max_depth": 10,
+      "max_features": "log2",
+      "min_samples_split": 19,
+      "n_estimators": 317
+    },
+    "hub_repo_id": "cike-dev/xai-heart-disease-uci-rf",
+    "hub_commit_sha": "a5b44f9ddb06fb2e4f75c459e47b73b57cc869f0",
+    "test_performance": {
+      "accuracy": 0.8586956521739131,
+      "precision": 0.8454545454545455,
+      "recall": 0.9117647058823529,
+      "f1": 0.8773584905660378,
+      "roc_auc": 0.9230033476805356,
+      "pr_auc": 0.9347634464248507
+    }
+  },
+  "library_versions": {
+    "lime": "unknown",
+    "sklearn": "1.7.2",
+    "xgboost": "3.3.0",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "python": "3.13.9"
+  },
+  "runtime_seconds": 15.38,
+  "generated_at_utc": "2026-07-12T20:10:29.081466Z"
+}

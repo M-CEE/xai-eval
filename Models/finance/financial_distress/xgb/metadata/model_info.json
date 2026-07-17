@@ -1,0 +1,29 @@
+{
+  "dataset_name": "financial_distress",
+  "domain": "finance",
+  "model_type": "xgb",
+  "model_name": "xgb",
+  "random_state": 42,
+  "cv_folds": 5,
+  "search_method": "optuna",
+  "n_trials": 50,
+  "scoring": "roc_auc",
+  "best_hyperparameters": {
+    "n_estimators": 123,
+    "max_depth": 9,
+    "learning_rate": 0.07725378389307355,
+    "subsample": 0.8832290311184181,
+    "colsample_bytree": 0.608233797718321,
+    "min_child_weight": 10
+  },
+  "search_time_seconds": 305.62,
+  "final_refit_time_seconds": 0.92,
+  "total_runtime_seconds": 306.54,
+  "trained_at_utc": "2026-07-07T06:48:56.090775Z",
+  "python_version": "3.13.9",
+  "sklearn_version": "1.7.2",
+  "xgboost_version": "3.3.0",
+  "model_path": "../Models\\finance\\financial_distress\\xgb\\model\\model.skops",
+  "hub_repo_id": null,
+  "hub_commit_sha": "d600bcb5ddf511a90d87cd5ed0c81b219b05d989"
+}

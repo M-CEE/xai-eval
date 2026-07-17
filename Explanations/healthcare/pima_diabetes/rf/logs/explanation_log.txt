@@ -1,0 +1,66 @@
+PREPROCESSING LOG
+============================================================
+
+------------------------------------------------------------
+1. CONFIGURATION
+------------------------------------------------------------
+{
+  "dataset_name": "pima_diabetes",
+  "domain": "healthcare",
+  "model_name": "rf",
+  "explainers": [
+    "shap",
+    "lime"
+  ],
+  "datasets_root": "../Datasets",
+  "models_root": "../Models",
+  "explanations_root": "../Explanations"
+}
+
+------------------------------------------------------------
+2. LOAD MODEL + DATA
+------------------------------------------------------------
+Loaded model: ../Models\healthcare\pima_diabetes\rf\model\model.skops (trusted types: [])
+Model: rf on pima_diabetes (healthcare)
+Feature order (8): ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
+X_test: (154, 8), X_train_balanced (LIME background): (800, 8)
+Model test performance: {'accuracy': 0.7012987012987013, 'precision': 0.5526315789473685, 'recall': 0.7777777777777778, 'f1': 0.6461538461538462, 'roc_auc': 0.8175925925925926, 'pr_auc': 0.7004424901116033}
+
+------------------------------------------------------------
+3. SELECT EXPLANATION SUBSET
+------------------------------------------------------------
+Selected 154 instances (full_test_set)
+Class distribution -- full test: {0: 0.6493506493506493, 1: 0.35064935064935066}, selected: {0: 0.6493506493506493, 1: 0.35064935064935066}
+Saved: ../Explanations\healthcare\pima_diabetes\rf\instances\metadata.json, ../Explanations\healthcare\pima_diabetes\rf\instances\X_explain.csv, ../Explanations\healthcare\pima_diabetes\rf\instances\y_explain.csv
+
+------------------------------------------------------------
+3B. SELECT CASE INSTANCES
+------------------------------------------------------------
+Case selection rule: highest_confidence
+Correctly classified case: {'position_in_X_explain': 138, 'dataframe_index': 138, 'y_true': 0, 'y_pred': 0, 'predicted_proba_class1': 0.012218417837118866, 'confidence_in_predicted_class': 0.9877815821628811}
+Incorrectly classified case: {'position_in_X_explain': 121, 'dataframe_index': 121, 'y_true': 1, 'y_pred': 0, 'predicted_proba_class1': 0.09695808049411364, 'confidence_in_predicted_class': 0.9030419195058863}
+Saved: ../Explanations\healthcare\pima_diabetes\rf\instances\case_instances.json
+
+------------------------------------------------------------
+4. SHAP EXPLANATIONS
+------------------------------------------------------------
+SHAP values: (154, 8), computed in 0.0s
+Saved: ../Explanations\healthcare\pima_diabetes\rf\shap\shap_values.npy, base_values.npy, feature_importance.csv, metadata.json
+[FIGURE SAVED] summary.png  |  caption: SHAP beeswarm summary plot (top features by impact).
+[FIGURE SAVED] bar.png  |  caption: Features ranked by mean |SHAP value|.
+[FIGURE SAVED] waterfall_case1.png  |  caption: SHAP waterfall for a correctly classified test instance (y_true=0, y_pred=0, p(class 1)=0.012).
+[FIGURE SAVED] waterfall_case2.png  |  caption: SHAP waterfall for a incorrectly classified test instance (y_true=1, y_pred=0, p(class 1)=0.097).
+
+------------------------------------------------------------
+5. LIME EXPLANATIONS
+------------------------------------------------------------
+LIME explanations for 154 instances, computed in 4.3s
+Saved: lime_explanations.csv, lime_instance_summary.csv, metadata.json
+[FIGURE SAVED] case1.png  |  caption: Standard LIME local explanation for a correctly classified test instance (y_true=0, y_pred=0, p(class 1)=0.012).
+[FIGURE SAVED] case2.png  |  caption: Standard LIME local explanation for a incorrectly classified test instance (y_true=1, y_pred=0, p(class 1)=0.097).
+Created master experiment protocol: ../Explanations\experiment_protocol.json
+
+------------------------------------------------------------
+DONE
+------------------------------------------------------------
+Explanation artifacts at: ../Explanations\healthcare\pima_diabetes\rf

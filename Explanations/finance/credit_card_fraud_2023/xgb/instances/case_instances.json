@@ -1,0 +1,14 @@
+{
+  "correctly_classified": {
+    "position_in_X_explain": 0,
+    "dataframe_index": 43697,
+    "y_true": 1,
+    "y_pred": 1,
+    "predicted_proba_class1": 1.0,
+    "confidence_in_predicted_class": 1.0
+  },
+  "incorrectly_classified": null,
+  "selection_rule": "highest_confidence",
+  "confidence_definition": "predicted probability of the model's own predicted class",
+  "generated_at_utc": "2026-07-12T20:42:07.545032Z"
+}

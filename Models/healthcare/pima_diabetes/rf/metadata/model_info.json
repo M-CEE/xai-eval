@@ -1,0 +1,26 @@
+{
+  "dataset_name": "pima_diabetes",
+  "domain": "healthcare",
+  "model_type": "rf",
+  "model_name": "rf",
+  "random_state": 42,
+  "cv_folds": 5,
+  "search_method": "random",
+  "n_iter": 50,
+  "scoring": "roc_auc",
+  "best_hyperparameters": {
+    "max_depth": 5,
+    "max_features": "log2",
+    "min_samples_split": 18,
+    "n_estimators": 151
+  },
+  "search_time_seconds": 50.25,
+  "final_refit_time_seconds": 0.26,
+  "trained_at_utc": "2026-07-05T19:18:10.659793Z",
+  "python_version": "3.13.9",
+  "sklearn_version": "1.7.2",
+  "xgboost_version": "3.3.0",
+  "model_path": "../Models\\healthcare\\pima_diabetes\\rf\\model\\model.skops",
+  "hub_repo_id": "cike-dev/xai-pima-diabetes-rf",
+  "hub_commit_sha": "b84b0a518e8467eccf8a7ba6535c79f3190151c4"
+}

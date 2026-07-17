@@ -1,0 +1,19 @@
+{
+  "dataset_name": "pima_diabetes",
+  "domain": "healthcare",
+  "source": "https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv",
+  "rows": 768,
+  "features": 8,
+  "target": "Outcome",
+  "numerical_features": [
+    "Pregnancies",
+    "Glucose",
+    "BloodPressure",
+    "SkinThickness",
+    "Insulin",
+    "BMI",
+    "DiabetesPedigreeFunction",
+    "Age"
+  ],
+  "categorical_features": []
+}

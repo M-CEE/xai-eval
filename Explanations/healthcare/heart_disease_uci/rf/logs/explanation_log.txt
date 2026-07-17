@@ -1,0 +1,66 @@
+PREPROCESSING LOG
+============================================================
+
+------------------------------------------------------------
+1. CONFIGURATION
+------------------------------------------------------------
+{
+  "dataset_name": "heart_disease_uci",
+  "domain": "healthcare",
+  "model_name": "rf",
+  "explainers": [
+    "shap",
+    "lime"
+  ],
+  "datasets_root": "../Datasets",
+  "models_root": "../Models",
+  "explanations_root": "../Explanations"
+}
+
+------------------------------------------------------------
+2. LOAD MODEL + DATA
+------------------------------------------------------------
+Loaded model: ../Models\healthcare\heart_disease_uci\rf\model\model.skops (trusted types: [])
+Model: rf on heart_disease_uci (healthcare)
+Feature order (25): ['age', 'trestbps', 'chol', 'thalch', 'oldpeak', 'ca', 'sex_Female', 'sex_Male', 'cp_asymptomatic', 'cp_atypical angina', 'cp_non-anginal', 'cp_typical angina', 'fbs_False', 'fbs_True', 'restecg_lv hypertrophy', 'restecg_normal', 'restecg_st-t abnormality', 'exang_False', 'exang_True', 'slope_downsloping', 'slope_flat', 'slope_upsloping', 'thal_fixed defect', 'thal_normal', 'thal_reversable defect']
+X_test: (184, 25), X_train_balanced (LIME background): (812, 25)
+Model test performance: {'accuracy': 0.8586956521739131, 'precision': 0.8454545454545455, 'recall': 0.9117647058823529, 'f1': 0.8773584905660378, 'roc_auc': 0.9230033476805356, 'pr_auc': 0.9347634464248507}
+
+------------------------------------------------------------
+3. SELECT EXPLANATION SUBSET
+------------------------------------------------------------
+Selected 184 instances (full_test_set)
+Class distribution -- full test: {0: 0.44565217391304346, 1: 0.5543478260869565}, selected: {0: 0.44565217391304346, 1: 0.5543478260869565}
+Saved: ../Explanations\healthcare\heart_disease_uci\rf\instances\metadata.json, ../Explanations\healthcare\heart_disease_uci\rf\instances\X_explain.csv, ../Explanations\healthcare\heart_disease_uci\rf\instances\y_explain.csv
+
+------------------------------------------------------------
+3B. SELECT CASE INSTANCES
+------------------------------------------------------------
+Case selection rule: highest_confidence
+Correctly classified case: {'position_in_X_explain': 118, 'dataframe_index': 118, 'y_true': 0, 'y_pred': 0, 'predicted_proba_class1': 0.007690916851311361, 'confidence_in_predicted_class': 0.9923090831486886}
+Incorrectly classified case: {'position_in_X_explain': 39, 'dataframe_index': 39, 'y_true': 1, 'y_pred': 0, 'predicted_proba_class1': 0.06895718024836049, 'confidence_in_predicted_class': 0.9310428197516395}
+Saved: ../Explanations\healthcare\heart_disease_uci\rf\instances\case_instances.json
+
+------------------------------------------------------------
+4. SHAP EXPLANATIONS
+------------------------------------------------------------
+SHAP values: (184, 25), computed in 0.8s
+Saved: ../Explanations\healthcare\heart_disease_uci\rf\shap\shap_values.npy, base_values.npy, feature_importance.csv, metadata.json
+[FIGURE SAVED] summary.png  |  caption: SHAP beeswarm summary plot (top features by impact).
+[FIGURE SAVED] bar.png  |  caption: Features ranked by mean |SHAP value|.
+[FIGURE SAVED] waterfall_case1.png  |  caption: SHAP waterfall for a correctly classified test instance (y_true=0, y_pred=0, p(class 1)=0.008).
+[FIGURE SAVED] waterfall_case2.png  |  caption: SHAP waterfall for a incorrectly classified test instance (y_true=1, y_pred=0, p(class 1)=0.069).
+
+------------------------------------------------------------
+5. LIME EXPLANATIONS
+------------------------------------------------------------
+LIME explanations for 184 instances, computed in 15.4s
+Saved: lime_explanations.csv, lime_instance_summary.csv, metadata.json
+[FIGURE SAVED] case1.png  |  caption: Standard LIME local explanation for a correctly classified test instance (y_true=0, y_pred=0, p(class 1)=0.008).
+[FIGURE SAVED] case2.png  |  caption: Standard LIME local explanation for a incorrectly classified test instance (y_true=1, y_pred=0, p(class 1)=0.069).
+Updated master experiment protocol: ../Explanations\experiment_protocol.json (5 run(s) covered)
+
+------------------------------------------------------------
+DONE
+------------------------------------------------------------
+Explanation artifacts at: ../Explanations\healthcare\heart_disease_uci\rf

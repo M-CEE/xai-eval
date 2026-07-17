@@ -1,0 +1,26 @@
+{
+  "dataset_name": "heart_disease_uci",
+  "domain": "healthcare",
+  "model_type": "rf",
+  "model_name": "rf",
+  "random_state": 42,
+  "cv_folds": 5,
+  "search_method": "random",
+  "n_iter": 50,
+  "scoring": "roc_auc",
+  "best_hyperparameters": {
+    "max_depth": 10,
+    "max_features": "log2",
+    "min_samples_split": 19,
+    "n_estimators": 317
+  },
+  "search_time_seconds": 45.6,
+  "final_refit_time_seconds": 0.42,
+  "trained_at_utc": "2026-07-05T14:59:54.853917Z",
+  "python_version": "3.13.9",
+  "sklearn_version": "1.7.2",
+  "xgboost_version": "3.3.0",
+  "model_path": "../Models\\healthcare\\heart_disease_uci\\rf\\model\\model.skops",
+  "hub_repo_id": "cike-dev/xai-heart-disease-uci-rf",
+  "hub_commit_sha": "a5b44f9ddb06fb2e4f75c459e47b73b57cc869f0"
+}

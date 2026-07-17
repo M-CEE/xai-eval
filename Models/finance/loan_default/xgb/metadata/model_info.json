@@ -1,0 +1,29 @@
+{
+  "dataset_name": "loan_default",
+  "domain": "finance",
+  "model_type": "xgb",
+  "model_name": "xgb",
+  "random_state": 42,
+  "cv_folds": 5,
+  "search_method": "optuna",
+  "n_trials": 50,
+  "scoring": "roc_auc",
+  "best_hyperparameters": {
+    "n_estimators": 162,
+    "max_depth": 3,
+    "learning_rate": 0.17722639012975713,
+    "subsample": 0.8044482694600088,
+    "colsample_bytree": 0.8351638558659475,
+    "min_child_weight": 1
+  },
+  "search_time_seconds": 568.65,
+  "final_refit_time_seconds": 4.03,
+  "total_runtime_seconds": 572.68,
+  "trained_at_utc": "2026-07-07T06:25:25.991362Z",
+  "python_version": "3.13.9",
+  "sklearn_version": "1.7.2",
+  "xgboost_version": "3.3.0",
+  "model_path": "../Models\\finance\\loan_default\\xgb\\model\\model.skops",
+  "hub_repo_id": null,
+  "hub_commit_sha": "e2eb95715694b620d6983fae2a2aabb92ecb2f96"
+}

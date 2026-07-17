@@ -1,0 +1,10 @@
+{
+  "best_params": {
+    "max_depth": 10,
+    "max_features": "log2",
+    "min_samples_split": 19,
+    "n_estimators": 317
+  },
+  "best_cv_score": 0.8808371955255424,
+  "scoring": "roc_auc"
+}

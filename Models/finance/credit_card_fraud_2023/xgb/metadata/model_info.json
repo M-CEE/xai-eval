@@ -1,0 +1,29 @@
+{
+  "dataset_name": "credit_card_fraud_2023",
+  "domain": "finance",
+  "model_type": "xgb",
+  "model_name": "xgb",
+  "random_state": 42,
+  "cv_folds": 5,
+  "search_method": "optuna",
+  "n_trials": 50,
+  "scoring": "roc_auc",
+  "best_hyperparameters": {
+    "n_estimators": 478,
+    "max_depth": 6,
+    "learning_rate": 0.1675629037403375,
+    "subsample": 0.8364541994575864,
+    "colsample_bytree": 0.7451940727299186,
+    "min_child_weight": 1
+  },
+  "search_time_seconds": 528.96,
+  "final_refit_time_seconds": 18.05,
+  "total_runtime_seconds": 547.0,
+  "trained_at_utc": "2026-07-07T08:39:23.874800Z",
+  "python_version": "3.13.9",
+  "sklearn_version": "1.7.2",
+  "xgboost_version": "3.3.0",
+  "model_path": "../Models\\finance\\credit_card_fraud_2023\\xgb\\model\\model.skops",
+  "hub_repo_id": null,
+  "hub_commit_sha": "9771513ed62436c29720191cb846aa41510d52c5"
+}

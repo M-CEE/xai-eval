@@ -1,0 +1,66 @@
+PREPROCESSING LOG
+============================================================
+
+------------------------------------------------------------
+1. CONFIGURATION
+------------------------------------------------------------
+{
+  "dataset_name": "loan_default",
+  "domain": "finance",
+  "model_name": "xgb",
+  "explainers": [
+    "shap",
+    "lime"
+  ],
+  "datasets_root": "../Datasets",
+  "models_root": "../Models",
+  "explanations_root": "../Explanations"
+}
+
+------------------------------------------------------------
+2. LOAD MODEL + DATA
+------------------------------------------------------------
+Loaded model: ../Models\finance\loan_default\xgb\model\model.skops (trusted types: ['xgboost.core.Booster', 'xgboost.sklearn.XGBClassifier'])
+Model: xgb on loan_default (finance)
+Feature order (31): ['Age', 'Income', 'LoanAmount', 'CreditScore', 'MonthsEmployed', 'NumCreditLines', 'InterestRate', 'LoanTerm', 'DTIRatio', "Education_Bachelor's", 'Education_High School', "Education_Master's", 'Education_PhD', 'EmploymentType_Full-time', 'EmploymentType_Part-time', 'EmploymentType_Self-employed', 'EmploymentType_Unemployed', 'MaritalStatus_Divorced', 'MaritalStatus_Married', 'MaritalStatus_Single', 'HasMortgage_No', 'HasMortgage_Yes', 'HasDependents_No', 'HasDependents_Yes', 'LoanPurpose_Auto', 'LoanPurpose_Business', 'LoanPurpose_Education', 'LoanPurpose_Home', 'LoanPurpose_Other', 'HasCoSigner_No', 'HasCoSigner_Yes']
+X_test: (51070, 31), X_train_balanced (LIME background): (361110, 31)
+Model test performance: {'accuracy': 0.8856863129038575, 'precision': 0.5456329735034348, 'recall': 0.09374473107401787, 'f1': 0.16, 'roc_auc': 0.7518823037593063, 'pr_auc': 0.31864753009176944}
+
+------------------------------------------------------------
+3. SELECT EXPLANATION SUBSET
+------------------------------------------------------------
+Selected 500 instances (stratified_random)
+Class distribution -- full test: {0: 0.8838652829449775, 1: 0.11613471705502251}, selected: {0: 0.884, 1: 0.116}
+Saved: ../Explanations\finance\loan_default\xgb\instances\metadata.json, ../Explanations\finance\loan_default\xgb\instances\X_explain.csv, ../Explanations\finance\loan_default\xgb\instances\y_explain.csv
+
+------------------------------------------------------------
+3B. SELECT CASE INSTANCES
+------------------------------------------------------------
+Case selection rule: highest_confidence
+Correctly classified case: {'position_in_X_explain': 192, 'dataframe_index': 13839, 'y_true': 0, 'y_pred': 0, 'predicted_proba_class1': 0.007467556279152632, 'confidence_in_predicted_class': 0.9925324320793152}
+Incorrectly classified case: {'position_in_X_explain': 376, 'dataframe_index': 3358, 'y_true': 1, 'y_pred': 0, 'predicted_proba_class1': 0.02477181889116764, 'confidence_in_predicted_class': 0.9752281904220581}
+Saved: ../Explanations\finance\loan_default\xgb\instances\case_instances.json
+
+------------------------------------------------------------
+4. SHAP EXPLANATIONS
+------------------------------------------------------------
+SHAP values: (500, 31), computed in 0.1s
+Saved: ../Explanations\finance\loan_default\xgb\shap\shap_values.npy, base_values.npy, feature_importance.csv, metadata.json
+[FIGURE SAVED] summary.png  |  caption: SHAP beeswarm summary plot (top features by impact).
+[FIGURE SAVED] bar.png  |  caption: Features ranked by mean |SHAP value|.
+[FIGURE SAVED] waterfall_case1.png  |  caption: SHAP waterfall for a correctly classified test instance (y_true=0, y_pred=0, p(class 1)=0.007).
+[FIGURE SAVED] waterfall_case2.png  |  caption: SHAP waterfall for a incorrectly classified test instance (y_true=1, y_pred=0, p(class 1)=0.025).
+
+------------------------------------------------------------
+5. LIME EXPLANATIONS
+------------------------------------------------------------
+LIME explanations for 500 instances, computed in 24.5s
+Saved: lime_explanations.csv, lime_instance_summary.csv, metadata.json
+[FIGURE SAVED] case1.png  |  caption: Standard LIME local explanation for a correctly classified test instance (y_true=0, y_pred=0, p(class 1)=0.007).
+[FIGURE SAVED] case2.png  |  caption: Standard LIME local explanation for a incorrectly classified test instance (y_true=1, y_pred=0, p(class 1)=0.025).
+Updated master experiment protocol: ../Explanations\experiment_protocol.json (8 run(s) covered)
+
+------------------------------------------------------------
+DONE
+------------------------------------------------------------
+Explanation artifacts at: ../Explanations\finance\loan_default\xgb

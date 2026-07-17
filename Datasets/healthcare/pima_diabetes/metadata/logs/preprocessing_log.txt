@@ -1,0 +1,193 @@
+PREPROCESSING LOG
+============================================================
+CONFIG: {'dataset_name': 'pima_diabetes', 'domain': 'healthcare', 'source': 'UCI Pima Indians Diabetes Database (via public mirror)', 'data_path': 'https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv', 'column_names': ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age', 'Outcome'], 'target': 'Outcome', 'zero_as_missing_cols': ['Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI'], 'random_state': 42, 'test_size': 0.2, 'imputation_strategy_num': 'median', 'imputation_strategy_cat': 'most_frequent', 'scaler': 'StandardScaler', 'balancing': 'SMOTE', 'feature_descriptions': {'Pregnancies': 'Number of times pregnant', 'Glucose': 'Plasma glucose concentration (2h oral glucose tolerance test)', 'BloodPressure': 'Diastolic blood pressure (mm Hg)', 'SkinThickness': 'Triceps skin fold thickness (mm)', 'Insulin': '2-Hour serum insulin (mu U/ml)', 'BMI': 'Body mass index (weight in kg / (height in m)^2)', 'DiabetesPedigreeFunction': 'Diabetes pedigree function (genetic risk score)', 'Age': 'Age (years)', 'Outcome': 'Class variable (0 = non-diabetic, 1 = diabetic)'}, 'datasets_root': '../Datasets'}
+
+------------------------------------------------------------
+2. DATASET LOADING
+------------------------------------------------------------
+Loaded from: https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv
+Shape: 768 rows x 9 columns
+Raw data cached to: ../Datasets\healthcare\pima_diabetes\raw\pima_diabetes_raw.csv
+
+------------------------------------------------------------
+3. INITIAL INSPECTION
+------------------------------------------------------------
+Pregnancies                   int64
+Glucose                       int64
+BloodPressure                 int64
+SkinThickness                 int64
+Insulin                       int64
+BMI                         float64
+DiabetesPedigreeFunction    float64
+Age                           int64
+Outcome                       int64
+
+Descriptive statistics:
+                          count        mean         std     min       25%       50%        75%     max
+Pregnancies               768.0    3.845052    3.369578   0.000   1.00000    3.0000    6.00000   17.00
+Glucose                   768.0  120.894531   31.972618   0.000  99.00000  117.0000  140.25000  199.00
+BloodPressure             768.0   69.105469   19.355807   0.000  62.00000   72.0000   80.00000  122.00
+SkinThickness             768.0   20.536458   15.952218   0.000   0.00000   23.0000   32.00000   99.00
+Insulin                   768.0   79.799479  115.244002   0.000   0.00000   30.5000  127.25000  846.00
+BMI                       768.0   31.992578    7.884160   0.000  27.30000   32.0000   36.60000   67.10
+DiabetesPedigreeFunction  768.0    0.471876    0.331329   0.078   0.24375    0.3725    0.62625    2.42
+Age                       768.0   33.240885   11.760232  21.000  24.00000   29.0000   41.00000   81.00
+Outcome                   768.0    0.348958    0.476951   0.000   0.00000    0.0000    1.00000    1.00
+
+Total missing cells: 0
+Duplicate rows: 0
+
+------------------------------------------------------------
+4. DATA QUALITY ASSESSMENT
+------------------------------------------------------------
+Duplicate rows found: 0 (removed: 0)
+
+Zero-value counts in columns where 0 is not physiologically valid:
+Glucose            5
+BloodPressure     35
+SkinThickness    227
+Insulin          374
+BMI               11
+
+Missingness summary (after sentinel recoding):
+                          missing_count  missing_pct
+Age                                   0         0.00
+BMI                                  11         1.43
+BloodPressure                        35         4.56
+DiabetesPedigreeFunction              0         0.00
+Glucose                               5         0.65
+Insulin                             374        48.70
+Outcome                               0         0.00
+Pregnancies                           0         0.00
+SkinThickness                       227        29.56
+
+WARNING: the following columns exceed 40% missing and will still be median/mode-imputed under the standard protocol. Imputing at this rate can materially distort these features -- flag for the methodology/limitations section:
+         missing_count  missing_pct
+Insulin            374         48.7
+
+Numerical columns: ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
+Categorical columns: []
+
+------------------------------------------------------------
+DESCRIPTIVE VISUALIZATIONS
+------------------------------------------------------------
+[FIGURE SAVED] fig_missing_value_pattern_heatmap.png  |  caption: Heatmap of missing values across all records after sentinel-value recoding, prior to imputation.
+[FIGURE SAVED] fig_feature_distributions_observed_values.png  |  caption: Histograms with kernel density estimates for numerical features, computed on observed (non-missing) values.
+[FIGURE SAVED] fig_pearson_correlation_heatmap.png  |  caption: Pearson correlation matrix across numerical features and the target variable.
+[FIGURE SAVED] fig_class_balance_target.png  |  caption: Class balance of the target variable Outcome in the full (pre-split) dataset.
+
+------------------------------------------------------------
+5. TRAIN/TEST SPLIT
+------------------------------------------------------------
+Train: 614 rows | Test: 154 rows
+Stratified on target: True
+
+------------------------------------------------------------
+6. MISSING VALUE HANDLING
+------------------------------------------------------------
+Numerical imputation strategy: median (fit on train only)
+Pregnancies                   3.0000
+Glucose                     117.0000
+BloodPressure                72.0000
+SkinThickness                29.0000
+Insulin                     125.0000
+BMI                          32.4000
+DiabetesPedigreeFunction      0.3825
+Age                          29.0000
+
+Remaining missing values after imputation: 0
+
+------------------------------------------------------------
+7. ENCODING
+------------------------------------------------------------
+No categorical columns present -- encoding step skipped.
+
+------------------------------------------------------------
+8. OUTLIER ANALYSIS (documented only, not removed)
+------------------------------------------------------------
+                          n_outliers_iqr  lower_bound  upper_bound
+feature                                                           
+Pregnancies                            2    -6.500000    13.500000
+Glucose                                0    37.500000   201.500000
+BloodPressure                         13    40.000000   104.000000
+SkinThickness                         73    14.500000    42.500000
+Insulin                              253   105.000000   145.000000
+BMI                                    7    14.312500    49.812500
+DiabetesPedigreeFunction              19    -0.346375     1.230625
+Age                                    6    -1.500000    66.500000
+
+Note: outliers are documented for review only; no rows were removed. Automatic removal is avoided here to preserve interpretability for downstream XAI analysis (SHAP/LIME).
+[FIGURE SAVED] fig_outlier_boxplots_train_set.png  |  caption: Boxplots of all numerical training-set features used for IQR-based outlier screening (outliers documented, not removed).
+
+------------------------------------------------------------
+9. SCALING
+------------------------------------------------------------
+Scaler: StandardScaler (fit on train only)
+                                mean      scale
+Pregnancies                 3.819218   3.311448
+Glucose                   121.671010  29.979351
+BloodPressure              72.140065  12.265119
+SkinThickness              29.042345   8.884611
+Insulin                   137.705212  78.700600
+BMI                        32.448208   6.818562
+DiabetesPedigreeFunction    0.477428   0.330031
+Age                        33.366450  11.823798
+
+------------------------------------------------------------
+10. CLASS IMBALANCE HANDLING
+------------------------------------------------------------
+Class balance before:
+Outcome
+0    65.15
+1    34.85
+
+Applied SMOTE (train set only; test set untouched).
+Class balance after:
+Outcome
+0    50.0
+1    50.0
+
+------------------------------------------------------------
+11. SAVE PROCESSED DATA
+------------------------------------------------------------
+Saved: ../Datasets\healthcare\pima_diabetes\processed\data\X_train_prebalance.csv
+Saved: ../Datasets\healthcare\pima_diabetes\processed\data\y_train_prebalance.csv
+Saved: ../Datasets\healthcare\pima_diabetes\processed\data\X_train_balanced.csv
+Saved: ../Datasets\healthcare\pima_diabetes\processed\data\y_train_balanced.csv
+Saved: ../Datasets\healthcare\pima_diabetes\processed\data\X_test.csv
+Saved: ../Datasets\healthcare\pima_diabetes\processed\data\y_test.csv
+
+Note: 'prebalance' = post impute/encode/scale, pre-SMOTE (use this for CV-based hyperparameter search, resampling inside each fold). 'balanced' = full SMOTE-applied training set (use this for the final refit with the chosen hyperparameters).
+
+------------------------------------------------------------
+11b. SAVE FITTED TRANSFORMERS
+------------------------------------------------------------
+Saved fitted imputer/encoder/scaler bundle: ../Datasets\healthcare\pima_diabetes\metadata\fitted_transformers.joblib
+
+========================================
+DATASET: pima_diabetes
+DOMAIN: healthcare
+
+Samples: 768
+Features: 8
+
+Missing Values (pre-imputation): 652
+Duplicates Removed: 0
+
+Train Size (before balancing): 614
+Train Size (after balancing): 800
+Test Size: 154
+
+Scaling: StandardScaler
+Imputation: median
+
+Class Balance Before:
+  0 = 65.2%
+  1 = 34.9%
+
+Class Balance After:
+  0 = 50.0%
+  1 = 50.0%
+
+Balancing: SMOTE
+========================================

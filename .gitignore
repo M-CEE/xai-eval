@@ -1,0 +1,10 @@
+.old/
+.env
+xai_eval_report.md
+notebooks/Evaluation/
+# Models/finance/credit_card_fraud_2023/rf/model/
+# Models/finance/credit_card_fraud_2023/xgb/model/
+# Models/finance/financial_distress/rf/model/
+# Models/finance/financial_distress/xgb/model/
+# Models/finance/loan_default/rf/model/
+# Models/finance/loan_default/xgb/model/

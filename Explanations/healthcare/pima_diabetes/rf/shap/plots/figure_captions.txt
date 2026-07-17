@@ -1,0 +1,6 @@
+FIGURE CAPTIONS (filename -> caption)
+============================================================
+summary.png: SHAP beeswarm summary plot (top features by impact).
+bar.png: Features ranked by mean |SHAP value|.
+waterfall_case1.png: SHAP waterfall for a correctly classified test instance (y_true=0, y_pred=0, p(class 1)=0.012).
+waterfall_case2.png: SHAP waterfall for a incorrectly classified test instance (y_true=1, y_pred=0, p(class 1)=0.097).

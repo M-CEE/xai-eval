@@ -1,0 +1,28 @@
+{
+  "dataset_name": "financial_distress",
+  "domain": "finance",
+  "model_type": "rf",
+  "model_name": "rf",
+  "random_state": 42,
+  "cv_folds": 5,
+  "search_method": "optuna",
+  "n_trials": 50,
+  "scoring": "roc_auc",
+  "best_hyperparameters": {
+    "n_estimators": 431,
+    "max_depth": 5,
+    "min_samples_split": 11,
+    "min_samples_leaf": 9,
+    "max_features": "log2"
+  },
+  "search_time_seconds": 1096.7,
+  "final_refit_time_seconds": 1.95,
+  "total_runtime_seconds": 1098.64,
+  "trained_at_utc": "2026-07-07T06:43:48.025914Z",
+  "python_version": "3.13.9",
+  "sklearn_version": "1.7.2",
+  "xgboost_version": "3.3.0",
+  "model_path": "../Models\\finance\\financial_distress\\rf\\model\\model.skops",
+  "hub_repo_id": null,
+  "hub_commit_sha": "cba05e89f5a675867be98a11b704aed3695700cd"
+}

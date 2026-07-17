@@ -1,0 +1,86 @@
+PREPROCESSING LOG
+============================================================
+
+------------------------------------------------------------
+1. CONFIGURATION
+------------------------------------------------------------
+{
+  "dataset_name": "breast_cancer_wisconsin",
+  "domain": "healthcare",
+  "model_type": "rf",
+  "datasets_root": "../Datasets",
+  "models_root": "../Models",
+  "push_to_hub": true,
+  "hub_repo_id": "cike-dev/xai-breast-cancer-wisconsin-rf",
+  "param_distributions": "see DEFAULT_PARAM_SPACES / config"
+}
+target not given in config -- read 'diagnosis' from dataset_info.json
+
+------------------------------------------------------------
+2. LOAD ARTIFACTS
+------------------------------------------------------------
+Loaded pre-balance train: (455, 30)
+Loaded balanced train:    (570, 30)
+Loaded test:               (114, 30)
+Feature columns (30): ['radius_mean', 'texture_mean', 'perimeter_mean', 'area_mean', 'smoothness_mean', 'compactness_mean', 'concavity_mean', 'concave points_mean', 'symmetry_mean', 'fractal_dimension_mean', 'radius_se', 'texture_se', 'perimeter_se', 'area_se', 'smoothness_se', 'compactness_se', 'concavity_se', 'concave points_se', 'symmetry_se', 'fractal_dimension_se', 'radius_worst', 'texture_worst', 'perimeter_worst', 'area_worst', 'smoothness_worst', 'compactness_worst', 'concavity_worst', 'concave points_worst', 'symmetry_worst', 'fractal_dimension_worst']
+Fitted transformers bundle found: True
+
+------------------------------------------------------------
+3. HYPERPARAMETER SEARCH
+------------------------------------------------------------
+model_type: rf
+search_method: RandomizedSearchCV, n_iter=50
+cv: StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+scoring: roc_auc
+param_distributions: {'clf__n_estimators': <scipy.stats._distn_infrastructure.rv_discrete_frozen object at 0x0000023757A9B380>, 'clf__max_depth': [5, 10, 15, 20, 30], 'clf__min_samples_split': <scipy.stats._distn_infrastructure.rv_discrete_frozen object at 0x0000023757CCEFD0>, 'clf__max_features': ['sqrt', 'log2', None]}
+
+About to fit 5 folds x 50 candidates = 250 total fits. verbose output below will print each fit's progress as it happens (not silent).
+
+Search completed in 60.0s
+Best CV roc_auc: 0.9925
+Best params (pipeline-prefixed): {'clf__max_depth': 20, 'clf__max_features': 'log2', 'clf__min_samples_split': 2, 'clf__n_estimators': 147}
+
+------------------------------------------------------------
+4. REFIT FINAL MODEL
+------------------------------------------------------------
+Refitting on full balanced training set with params: {'max_depth': 20, 'max_features': 'log2', 'min_samples_split': 2, 'n_estimators': 147}
+Final refit completed in 0.21s on 570 rows
+
+------------------------------------------------------------
+5. HELD-OUT TEST EVALUATION
+------------------------------------------------------------
+Test metrics:
+  accuracy: 0.9737
+  precision: 1.0000
+  recall: 0.9286
+  f1: 0.9630
+  roc_auc: 0.9965
+  pr_auc: 0.9942
+Confusion matrix:
+[[72  0]
+ [ 3 39]]
+
+------------------------------------------------------------
+6. FIGURES
+------------------------------------------------------------
+[FIGURE SAVED] fig_confusion_matrix.png  |  caption: Confusion matrix on the held-out test set.
+[FIGURE SAVED] fig_roc_curve.png  |  caption: ROC curve on the held-out test set.
+[FIGURE SAVED] fig_precision_recall_curve.png  |  caption: Precision-Recall curve on the held-out test set.
+[FIGURE SAVED] fig_hyperparameter_search_scores.png  |  caption: Distribution of mean CV roc_auc across all RandomizedSearchCV candidates (dashed line = best candidate).
+[FIGURE SAVED] fig_baseline_feature_importance.png  |  caption: RF built-in feature importance (Gini/gain), top 20 features -- a sanity-check baseline, not a SHAP/LIME explanation.
+
+------------------------------------------------------------
+7. SAVE MODEL ARTIFACT + SCHEMA
+------------------------------------------------------------
+Saved model (skops): ../Models\healthcare\breast_cancer_wisconsin\rf\model\model.skops
+Saved feature schema: ../Models\healthcare\breast_cancer_wisconsin\rf\model\feature_schema.json
+
+------------------------------------------------------------
+9. PUSH TO HUGGING FACE HUB
+------------------------------------------------------------
+Pushed to https://huggingface.co/cike-dev/xai-breast-cancer-wisconsin-rf (commit aaa11046ba0a855459236635c91e0f31c7b8dcef)
+
+------------------------------------------------------------
+DONE
+------------------------------------------------------------
+Best CV roc_auc: 0.9925  |  Test roc_auc: 0.9965

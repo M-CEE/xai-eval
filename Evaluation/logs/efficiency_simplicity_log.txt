@@ -1,0 +1,16 @@
+PREPROCESSING LOG
+============================================================
+
+------------------------------------------------------------
+EFFICIENCY + SIMPLICITY: credit_card_fraud_2023 x xgb
+------------------------------------------------------------
+Feature-group map for credit_card_fraud_2023: 29 original features (from 29 model-input columns).
+Efficiency (shap, credit_card_fraud_2023, xgb): 0.600 ms/instance, 0.02069 ms/instance/feature
+SHAP simplicity: 500 instances x 3 metrics = 1500 rows.
+Efficiency (lime, credit_card_fraud_2023, xgb): 46.460 ms/instance, 1.60207 ms/instance/feature
+LIME simplicity: 500 instances x 3 metrics = 1500 rows (0 unparsed conditions excluded).
+Appended 3004 row(s) to ../Evaluation\metrics_long.csv
+
+------------------------------------------------------------
+DONE
+------------------------------------------------------------

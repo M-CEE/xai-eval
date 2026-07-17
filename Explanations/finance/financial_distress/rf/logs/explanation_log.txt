@@ -1,0 +1,66 @@
+PREPROCESSING LOG
+============================================================
+
+------------------------------------------------------------
+1. CONFIGURATION
+------------------------------------------------------------
+{
+  "dataset_name": "financial_distress",
+  "domain": "finance",
+  "model_name": "rf",
+  "explainers": [
+    "shap",
+    "lime"
+  ],
+  "datasets_root": "../Datasets",
+  "models_root": "../Models",
+  "explanations_root": "../Explanations"
+}
+
+------------------------------------------------------------
+2. LOAD MODEL + DATA
+------------------------------------------------------------
+Loaded model: ../Models\finance\financial_distress\rf\model\model.skops (trusted types: [])
+Model: rf on financial_distress (finance)
+Feature order (84): ['Time', 'x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x9', 'x10', 'x11', 'x12', 'x13', 'x14', 'x15', 'x16', 'x17', 'x18', 'x19', 'x20', 'x21', 'x22', 'x23', 'x24', 'x25', 'x26', 'x27', 'x28', 'x29', 'x30', 'x31', 'x32', 'x33', 'x34', 'x35', 'x36', 'x37', 'x38', 'x39', 'x40', 'x41', 'x42', 'x43', 'x44', 'x45', 'x46', 'x47', 'x48', 'x49', 'x50', 'x51', 'x52', 'x53', 'x54', 'x55', 'x56', 'x57', 'x58', 'x59', 'x60', 'x61', 'x62', 'x63', 'x64', 'x65', 'x66', 'x67', 'x68', 'x69', 'x70', 'x71', 'x72', 'x73', 'x74', 'x75', 'x76', 'x77', 'x78', 'x79', 'x80', 'x81', 'x82', 'x83']
+X_test: (734, 84), X_train_balanced (LIME background): (5656, 84)
+Model test performance: {'accuracy': 0.8623978201634878, 'precision': 0.20161290322580644, 'recall': 0.9259259259259259, 'f1': 0.33112582781456956, 'roc_auc': 0.9431085965739431, 'pr_auc': 0.3887237477805334}
+
+------------------------------------------------------------
+3. SELECT EXPLANATION SUBSET
+------------------------------------------------------------
+Selected 734 instances (full_test_set)
+Class distribution -- full test: {0: 0.9632152588555858, 1: 0.03678474114441417}, selected: {0: 0.9632152588555858, 1: 0.03678474114441417}
+Saved: ../Explanations\finance\financial_distress\rf\instances\metadata.json, ../Explanations\finance\financial_distress\rf\instances\X_explain.csv, ../Explanations\finance\financial_distress\rf\instances\y_explain.csv
+
+------------------------------------------------------------
+3B. SELECT CASE INSTANCES
+------------------------------------------------------------
+Case selection rule: highest_confidence
+Correctly classified case: {'position_in_X_explain': 209, 'dataframe_index': 209, 'y_true': 0, 'y_pred': 0, 'predicted_proba_class1': 0.00291622358859523, 'confidence_in_predicted_class': 0.9970837764114048}
+Incorrectly classified case: {'position_in_X_explain': 551, 'dataframe_index': 551, 'y_true': 0, 'y_pred': 1, 'predicted_proba_class1': 0.9375527702118767, 'confidence_in_predicted_class': 0.9375527702118767}
+Saved: ../Explanations\finance\financial_distress\rf\instances\case_instances.json
+
+------------------------------------------------------------
+4. SHAP EXPLANATIONS
+------------------------------------------------------------
+SHAP values: (734, 84), computed in 2.4s
+Saved: ../Explanations\finance\financial_distress\rf\shap\shap_values.npy, base_values.npy, feature_importance.csv, metadata.json
+[FIGURE SAVED] summary.png  |  caption: SHAP beeswarm summary plot (top features by impact).
+[FIGURE SAVED] bar.png  |  caption: Features ranked by mean |SHAP value|.
+[FIGURE SAVED] waterfall_case1.png  |  caption: SHAP waterfall for a correctly classified test instance (y_true=0, y_pred=0, p(class 1)=0.003).
+[FIGURE SAVED] waterfall_case2.png  |  caption: SHAP waterfall for a incorrectly classified test instance (y_true=0, y_pred=1, p(class 1)=0.938).
+
+------------------------------------------------------------
+5. LIME EXPLANATIONS
+------------------------------------------------------------
+LIME explanations for 734 instances, computed in 189.5s
+Saved: lime_explanations.csv, lime_instance_summary.csv, metadata.json
+[FIGURE SAVED] case1.png  |  caption: Standard LIME local explanation for a correctly classified test instance (y_true=0, y_pred=0, p(class 1)=0.003).
+[FIGURE SAVED] case2.png  |  caption: Standard LIME local explanation for a incorrectly classified test instance (y_true=0, y_pred=1, p(class 1)=0.938).
+Updated master experiment protocol: ../Explanations\experiment_protocol.json (9 run(s) covered)
+
+------------------------------------------------------------
+DONE
+------------------------------------------------------------
+Explanation artifacts at: ../Explanations\finance\financial_distress\rf

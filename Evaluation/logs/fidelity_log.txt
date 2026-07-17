@@ -1,0 +1,17 @@
+PREPROCESSING LOG
+============================================================
+
+------------------------------------------------------------
+FIDELITY: credit_card_fraud_2023 x xgb
+------------------------------------------------------------
+Loaded model (skops): Models\finance\credit_card_fraud_2023\xgb\model\model.skops (trusted types: ['xgboost.core.Booster', 'xgboost.sklearn.XGBClassifier'])
+Feature-group map for credit_card_fraud_2023: 29 original features (from 29 model-input columns).
+Baseline vector computed for finance/credit_card_fraud_2023 from X_train_prebalance.csv (454903 rows): 0 categorical, 29 numerical.
+Wrote 4000 rows to Fidelity\finance\credit_card_fraud_2023\xgb\shap\masked_predictions.csv
+Wrote 4000 rows to Fidelity\finance\credit_card_fraud_2023\xgb\lime\masked_predictions.csv
+Appended 10000 row(s) to Evaluation\metrics_long.csv
+
+------------------------------------------------------------
+DONE
+------------------------------------------------------------
+Fidelity: 10000 metrics_long rows written across ['shap', 'lime'].

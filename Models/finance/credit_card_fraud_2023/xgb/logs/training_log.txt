@@ -1,0 +1,130 @@
+PREPROCESSING LOG
+============================================================
+
+------------------------------------------------------------
+1. CONFIGURATION
+------------------------------------------------------------
+{
+  "dataset_name": "credit_card_fraud_2023",
+  "domain": "finance",
+  "model_type": "xgb",
+  "datasets_root": "../Datasets",
+  "models_root": "../Models",
+  "search_sample_size": 50000
+}
+Search budget: n_trials=50, cv_folds=5 (search_method=optuna)
+target not given in config -- read 'Class' from dataset_info.json
+
+------------------------------------------------------------
+2. LOAD ARTIFACTS
+------------------------------------------------------------
+Loaded pre-balance train: (454903, 29)
+Loaded balanced train:    (454903, 29)
+Loaded test:               (113726, 29)
+Feature columns (29): ['V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10', 'V11', 'V12', 'V13', 'V14', 'V15', 'V16', 'V17', 'V18', 'V19', 'V20', 'V21', 'V22', 'V23', 'V24', 'V25', 'V26', 'V27', 'V28', 'Amount']
+Fitted transformers bundle found: True
+
+------------------------------------------------------------
+3. HYPERPARAMETER SEARCH
+------------------------------------------------------------
+search_sample_size=50000: searching on a stratified subsample (50000 of 454903 rows). Final refit in step 4 still uses the full balanced training set.
+model_type: xgb
+search_method: Optuna TPE, n_trials=50
+cv: StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+scoring: roc_auc
+
+About to run 50 trials x 5 folds = 250 total fits. Optuna prints each trial's result to stdout as it completes (not silent).
+[trial 000] mean_cv_roc_auc=0.9999 params={'n_estimators': 250, 'max_depth': 10, 'learning_rate': 0.1205712628744377, 'subsample': 0.8394633936788146, 'colsample_bytree': 0.6624074561769746, 'min_child_weight': 2}
+[trial 001] mean_cv_roc_auc=0.9999 params={'n_estimators': 123, 'max_depth': 9, 'learning_rate': 0.07725378389307355, 'subsample': 0.8832290311184181, 'colsample_bytree': 0.608233797718321, 'min_child_weight': 10}
+[trial 002] mean_cv_roc_auc=0.9990 params={'n_estimators': 433, 'max_depth': 4, 'learning_rate': 0.01855998084649059, 'subsample': 0.6733618039413735, 'colsample_bytree': 0.7216968971838151, 'min_child_weight': 6}
+[trial 003] mean_cv_roc_auc=0.9999 params={'n_estimators': 273, 'max_depth': 5, 'learning_rate': 0.08012737503998542, 'subsample': 0.6557975442608167, 'colsample_bytree': 0.7168578594140873, 'min_child_weight': 4}
+[trial 004] mean_cv_roc_auc=0.9999 params={'n_estimators': 282, 'max_depth': 9, 'learning_rate': 0.019721610970574007, 'subsample': 0.8056937753654446, 'colsample_bytree': 0.836965827544817, 'min_child_weight': 1}
+[trial 005] mean_cv_roc_auc=0.9965 params={'n_estimators': 343, 'max_depth': 4, 'learning_rate': 0.012476394272569451, 'subsample': 0.9795542149013333, 'colsample_bytree': 0.9862528132298237, 'min_child_weight': 9}
+[trial 006] mean_cv_roc_auc=0.9997 params={'n_estimators': 222, 'max_depth': 3, 'learning_rate': 0.1024932221692416, 'subsample': 0.7760609974958406, 'colsample_bytree': 0.6488152939379115, 'min_child_weight': 5}
+[trial 007] mean_cv_roc_auc=0.9997 params={'n_estimators': 113, 'max_depth': 10, 'learning_rate': 0.024112898115291985, 'subsample': 0.8650089137415928, 'colsample_bytree': 0.7246844304357644, 'min_child_weight': 6}
+[trial 008] mean_cv_roc_auc=0.9999 params={'n_estimators': 319, 'max_depth': 4, 'learning_rate': 0.27051668818999286, 'subsample': 0.9100531293444458, 'colsample_bytree': 0.9757995766256756, 'min_child_weight': 9}
+[trial 009] mean_cv_roc_auc=0.9998 params={'n_estimators': 339, 'max_depth': 10, 'learning_rate': 0.01351182947645082, 'subsample': 0.6783931449676581, 'colsample_bytree': 0.6180909155642152, 'min_child_weight': 4}
+[trial 010] mean_cv_roc_auc=1.0000 params={'n_estimators': 481, 'max_depth': 7, 'learning_rate': 0.2704729722717776, 'subsample': 0.6071847502459279, 'colsample_bytree': 0.8607466203112714, 'min_child_weight': 1}
+[trial 011] mean_cv_roc_auc=0.9999 params={'n_estimators': 490, 'max_depth': 7, 'learning_rate': 0.25871106065518623, 'subsample': 0.6030875933905162, 'colsample_bytree': 0.8645325909693057, 'min_child_weight': 1}
+[trial 012] mean_cv_roc_auc=0.9999 params={'n_estimators': 420, 'max_depth': 7, 'learning_rate': 0.15296493093819122, 'subsample': 0.7543020190008234, 'colsample_bytree': 0.8457055926316732, 'min_child_weight': 2}
+[trial 013] mean_cv_roc_auc=0.9998 params={'n_estimators': 186, 'max_depth': 7, 'learning_rate': 0.04418502153852536, 'subsample': 0.999078796538078, 'colsample_bytree': 0.9113613572674328, 'min_child_weight': 3}
+[trial 014] mean_cv_roc_auc=0.9999 params={'n_estimators': 409, 'max_depth': 8, 'learning_rate': 0.16214392756491144, 'subsample': 0.7371197153065265, 'colsample_bytree': 0.7865342687144126, 'min_child_weight': 2}
+[trial 015] mean_cv_roc_auc=1.0000 params={'n_estimators': 500, 'max_depth': 6, 'learning_rate': 0.16088904342151408, 'subsample': 0.827742343125099, 'colsample_bytree': 0.7907330462495208, 'min_child_weight': 1}
+[trial 016] mean_cv_roc_auc=0.9999 params={'n_estimators': 497, 'max_depth': 6, 'learning_rate': 0.19107000634586654, 'subsample': 0.6030901999183131, 'colsample_bytree': 0.7776615098265479, 'min_child_weight': 1}
+[trial 017] mean_cv_roc_auc=0.9999 params={'n_estimators': 455, 'max_depth': 6, 'learning_rate': 0.049851336791047855, 'subsample': 0.9429564520037396, 'colsample_bytree': 0.9146511487079994, 'min_child_weight': 3}
+[trial 018] mean_cv_roc_auc=1.0000 params={'n_estimators': 377, 'max_depth': 6, 'learning_rate': 0.28486938497704556, 'subsample': 0.7277252446529041, 'colsample_bytree': 0.9044243675990947, 'min_child_weight': 3}
+[trial 019] mean_cv_roc_auc=0.9999 params={'n_estimators': 470, 'max_depth': 8, 'learning_rate': 0.19697168242736296, 'subsample': 0.8095508942571449, 'colsample_bytree': 0.7917286259510855, 'min_child_weight': 1}
+[trial 020] mean_cv_roc_auc=0.9999 params={'n_estimators': 388, 'max_depth': 5, 'learning_rate': 0.1148049831895045, 'subsample': 0.7034278007429078, 'colsample_bytree': 0.825597101479583, 'min_child_weight': 2}
+[trial 021] mean_cv_roc_auc=0.9999 params={'n_estimators': 375, 'max_depth': 6, 'learning_rate': 0.2982143901250396, 'subsample': 0.7272892004058251, 'colsample_bytree': 0.8909289226737697, 'min_child_weight': 3}
+[trial 022] mean_cv_roc_auc=0.9999 params={'n_estimators': 451, 'max_depth': 5, 'learning_rate': 0.21594472605795537, 'subsample': 0.6398697019715807, 'colsample_bytree': 0.9425276355357161, 'min_child_weight': 4}
+[trial 023] mean_cv_roc_auc=1.0000 params={'n_estimators': 499, 'max_depth': 6, 'learning_rate': 0.15218053439398724, 'subsample': 0.7860952580882148, 'colsample_bytree': 0.87374491697214, 'min_child_weight': 3}
+[trial 024] mean_cv_roc_auc=0.9999 params={'n_estimators': 498, 'max_depth': 8, 'learning_rate': 0.14249848545039298, 'subsample': 0.792926400528465, 'colsample_bytree': 0.7584878228647013, 'min_child_weight': 1}
+[trial 025] mean_cv_roc_auc=0.9999 params={'n_estimators': 461, 'max_depth': 7, 'learning_rate': 0.08727272901544816, 'subsample': 0.8390153764443513, 'colsample_bytree': 0.8122302599381822, 'min_child_weight': 2}
+[trial 026] mean_cv_roc_auc=0.9999 params={'n_estimators': 471, 'max_depth': 5, 'learning_rate': 0.06669253870748405, 'subsample': 0.9258377034232699, 'colsample_bytree': 0.8686635711959776, 'min_child_weight': 5}
+[trial 027] mean_cv_roc_auc=1.0000 params={'n_estimators': 434, 'max_depth': 6, 'learning_rate': 0.21731052384888913, 'subsample': 0.836815785523733, 'colsample_bytree': 0.7526597646391255, 'min_child_weight': 2}
+[trial 028] mean_cv_roc_auc=0.9999 params={'n_estimators': 431, 'max_depth': 7, 'learning_rate': 0.20611255975647744, 'subsample': 0.7710474944483127, 'colsample_bytree': 0.6849795943732618, 'min_child_weight': 3}
+[trial 029] mean_cv_roc_auc=0.9999 params={'n_estimators': 407, 'max_depth': 8, 'learning_rate': 0.12309053951661432, 'subsample': 0.8769578158793079, 'colsample_bytree': 0.9558225677864421, 'min_child_weight': 7}
+[trial 030] mean_cv_roc_auc=0.9999 params={'n_estimators': 392, 'max_depth': 9, 'learning_rate': 0.2352310851238208, 'subsample': 0.6948378101009463, 'colsample_bytree': 0.86523895201521, 'min_child_weight': 2}
+[trial 031] mean_cv_roc_auc=1.0000 params={'n_estimators': 478, 'max_depth': 6, 'learning_rate': 0.1675629037403375, 'subsample': 0.8364541994575864, 'colsample_bytree': 0.7451940727299186, 'min_child_weight': 1}
+[trial 032] mean_cv_roc_auc=1.0000 params={'n_estimators': 443, 'max_depth': 6, 'learning_rate': 0.13203537478467595, 'subsample': 0.8503083223186821, 'colsample_bytree': 0.7485202093651705, 'min_child_weight': 2}
+[trial 033] mean_cv_roc_auc=0.9999 params={'n_estimators': 474, 'max_depth': 5, 'learning_rate': 0.17909163678204787, 'subsample': 0.8915036318340103, 'colsample_bytree': 0.6814887864027726, 'min_child_weight': 2}
+[trial 034] mean_cv_roc_auc=0.9999 params={'n_estimators': 433, 'max_depth': 7, 'learning_rate': 0.10091705745411601, 'subsample': 0.8549251181900698, 'colsample_bytree': 0.7441851580371602, 'min_child_weight': 4}
+[trial 035] mean_cv_roc_auc=1.0000 params={'n_estimators': 475, 'max_depth': 6, 'learning_rate': 0.22795589454375453, 'subsample': 0.8234915202812796, 'colsample_bytree': 0.7061124862182624, 'min_child_weight': 1}
+[trial 036] mean_cv_roc_auc=0.9999 params={'n_estimators': 360, 'max_depth': 4, 'learning_rate': 0.23284782775415994, 'subsample': 0.8270992580946128, 'colsample_bytree': 0.7032776446015402, 'min_child_weight': 1}
+[trial 037] mean_cv_roc_auc=1.0000 params={'n_estimators': 412, 'max_depth': 5, 'learning_rate': 0.2457422760925659, 'subsample': 0.954977295127572, 'colsample_bytree': 0.6493915347941589, 'min_child_weight': 1}
+[trial 038] mean_cv_roc_auc=0.9999 params={'n_estimators': 412, 'max_depth': 3, 'learning_rate': 0.18060116388108105, 'subsample': 0.9573528620037848, 'colsample_bytree': 0.6337193124710846, 'min_child_weight': 2}
+[trial 039] mean_cv_roc_auc=0.9999 params={'n_estimators': 319, 'max_depth': 5, 'learning_rate': 0.2923116311899484, 'subsample': 0.9079049521346232, 'colsample_bytree': 0.6041393755876386, 'min_child_weight': 1}
+[trial 040] mean_cv_roc_auc=1.0000 params={'n_estimators': 450, 'max_depth': 4, 'learning_rate': 0.10588548721684388, 'subsample': 0.6343570281344848, 'colsample_bytree': 0.6607344617933602, 'min_child_weight': 1}
+[trial 041] mean_cv_roc_auc=0.9999 params={'n_estimators': 434, 'max_depth': 6, 'learning_rate': 0.23618623665199093, 'subsample': 0.9627607912052472, 'colsample_bytree': 0.7079853101976723, 'min_child_weight': 1}
+[trial 042] mean_cv_roc_auc=0.9999 params={'n_estimators': 478, 'max_depth': 5, 'learning_rate': 0.24200714330368883, 'subsample': 0.888135231130978, 'colsample_bytree': 0.6862362133233019, 'min_child_weight': 1}
+[trial 043] mean_cv_roc_auc=0.9999 params={'n_estimators': 149, 'max_depth': 7, 'learning_rate': 0.2037657307149752, 'subsample': 0.8107419743778349, 'colsample_bytree': 0.628690046512952, 'min_child_weight': 2}
+[trial 044] mean_cv_roc_auc=0.9999 params={'n_estimators': 478, 'max_depth': 6, 'learning_rate': 0.1668655774089454, 'subsample': 0.758130307642455, 'colsample_bytree': 0.7209691749208134, 'min_child_weight': 1}
+[trial 045] mean_cv_roc_auc=0.9999 params={'n_estimators': 422, 'max_depth': 5, 'learning_rate': 0.13373380410696076, 'subsample': 0.9241590406853558, 'colsample_bytree': 0.7391593054923532, 'min_child_weight': 2}
+[trial 046] mean_cv_roc_auc=0.9999 params={'n_estimators': 395, 'max_depth': 7, 'learning_rate': 0.24420082140678737, 'subsample': 0.9798314572874531, 'colsample_bytree': 0.7673182775371488, 'min_child_weight': 10}
+[trial 047] mean_cv_roc_auc=1.0000 params={'n_estimators': 451, 'max_depth': 4, 'learning_rate': 0.25889669553460665, 'subsample': 0.8701740178440196, 'colsample_bytree': 0.65024686096747, 'min_child_weight': 1}
+[trial 048] mean_cv_roc_auc=0.9998 params={'n_estimators': 245, 'max_depth': 6, 'learning_rate': 0.031318022801050026, 'subsample': 0.8267082316247509, 'colsample_bytree': 0.6736556140372895, 'min_child_weight': 2}
+[trial 049] mean_cv_roc_auc=0.9999 params={'n_estimators': 358, 'max_depth': 5, 'learning_rate': 0.20694481230632703, 'subsample': 0.7118693369321873, 'colsample_bytree': 0.8075813385394597, 'min_child_weight': 8}
+
+Search completed in 529.0s
+Best CV roc_auc: 1.0000
+Best params (pipeline-prefixed): {'clf__n_estimators': 478, 'clf__max_depth': 6, 'clf__learning_rate': 0.1675629037403375, 'clf__subsample': 0.8364541994575864, 'clf__colsample_bytree': 0.7451940727299186, 'clf__min_child_weight': 1}
+
+------------------------------------------------------------
+4. REFIT FINAL MODEL
+------------------------------------------------------------
+Refitting on full balanced training set with params: {'n_estimators': 478, 'max_depth': 6, 'learning_rate': 0.1675629037403375, 'subsample': 0.8364541994575864, 'colsample_bytree': 0.7451940727299186, 'min_child_weight': 1}
+Final refit completed in 18.05s on 454903 rows
+
+------------------------------------------------------------
+5. HELD-OUT TEST EVALUATION
+------------------------------------------------------------
+Test metrics:
+  accuracy: 0.9998
+  precision: 0.9997
+  recall: 1.0000
+  f1: 0.9998
+  roc_auc: 1.0000
+  pr_auc: 1.0000
+Confusion matrix:
+[[56844    19]
+ [    0 56863]]
+
+------------------------------------------------------------
+6. FIGURES
+------------------------------------------------------------
+[FIGURE SAVED] fig_confusion_matrix.png  |  caption: Confusion matrix on the held-out test set.
+[FIGURE SAVED] fig_roc_curve.png  |  caption: ROC curve on the held-out test set.
+[FIGURE SAVED] fig_precision_recall_curve.png  |  caption: Precision-Recall curve on the held-out test set.
+[FIGURE SAVED] fig_hyperparameter_search_scores.png  |  caption: Distribution of mean CV roc_auc across all Optuna trials (dashed line = best candidate).
+[FIGURE SAVED] fig_baseline_feature_importance.png  |  caption: XGB built-in feature importance (Gini/gain), top 20 features -- a sanity-check baseline, not a SHAP/LIME explanation.
+
+------------------------------------------------------------
+7. SAVE MODEL ARTIFACT + SCHEMA
+------------------------------------------------------------
+Saved model (skops): ../Models\finance\credit_card_fraud_2023\xgb\model\model.skops
+Saved feature schema: ../Models\finance\credit_card_fraud_2023\xgb\model\feature_schema.json
+
+------------------------------------------------------------
+DONE
+------------------------------------------------------------
+Best CV roc_auc: 1.0000  |  Test roc_auc: 1.0000

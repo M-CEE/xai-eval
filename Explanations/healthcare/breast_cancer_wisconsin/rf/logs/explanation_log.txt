@@ -1,0 +1,66 @@
+PREPROCESSING LOG
+============================================================
+
+------------------------------------------------------------
+1. CONFIGURATION
+------------------------------------------------------------
+{
+  "dataset_name": "breast_cancer_wisconsin",
+  "domain": "healthcare",
+  "model_name": "rf",
+  "explainers": [
+    "shap",
+    "lime"
+  ],
+  "datasets_root": "../Datasets",
+  "models_root": "../Models",
+  "explanations_root": "../Explanations"
+}
+
+------------------------------------------------------------
+2. LOAD MODEL + DATA
+------------------------------------------------------------
+Loaded model: ../Models\healthcare\breast_cancer_wisconsin\rf\model\model.skops (trusted types: [])
+Model: rf on breast_cancer_wisconsin (healthcare)
+Feature order (30): ['radius_mean', 'texture_mean', 'perimeter_mean', 'area_mean', 'smoothness_mean', 'compactness_mean', 'concavity_mean', 'concave points_mean', 'symmetry_mean', 'fractal_dimension_mean', 'radius_se', 'texture_se', 'perimeter_se', 'area_se', 'smoothness_se', 'compactness_se', 'concavity_se', 'concave points_se', 'symmetry_se', 'fractal_dimension_se', 'radius_worst', 'texture_worst', 'perimeter_worst', 'area_worst', 'smoothness_worst', 'compactness_worst', 'concavity_worst', 'concave points_worst', 'symmetry_worst', 'fractal_dimension_worst']
+X_test: (114, 30), X_train_balanced (LIME background): (570, 30)
+Model test performance: {'accuracy': 0.9736842105263158, 'precision': 1.0, 'recall': 0.9285714285714286, 'f1': 0.9629629629629629, 'roc_auc': 0.9965277777777778, 'pr_auc': 0.9941520749407504}
+
+------------------------------------------------------------
+3. SELECT EXPLANATION SUBSET
+------------------------------------------------------------
+Selected 114 instances (full_test_set)
+Class distribution -- full test: {0: 0.631578947368421, 1: 0.3684210526315789}, selected: {0: 0.631578947368421, 1: 0.3684210526315789}
+Saved: ../Explanations\healthcare\breast_cancer_wisconsin\rf\instances\metadata.json, ../Explanations\healthcare\breast_cancer_wisconsin\rf\instances\X_explain.csv, ../Explanations\healthcare\breast_cancer_wisconsin\rf\instances\y_explain.csv
+
+------------------------------------------------------------
+3B. SELECT CASE INSTANCES
+------------------------------------------------------------
+Case selection rule: highest_confidence
+Correctly classified case: {'position_in_X_explain': 0, 'dataframe_index': 0, 'y_true': 0, 'y_pred': 0, 'predicted_proba_class1': 0.0, 'confidence_in_predicted_class': 1.0}
+Incorrectly classified case: {'position_in_X_explain': 16, 'dataframe_index': 16, 'y_true': 1, 'y_pred': 0, 'predicted_proba_class1': 0.272108843537415, 'confidence_in_predicted_class': 0.727891156462585}
+Saved: ../Explanations\healthcare\breast_cancer_wisconsin\rf\instances\case_instances.json
+
+------------------------------------------------------------
+4. SHAP EXPLANATIONS
+------------------------------------------------------------
+SHAP values: (114, 30), computed in 0.1s
+Saved: ../Explanations\healthcare\breast_cancer_wisconsin\rf\shap\shap_values.npy, base_values.npy, feature_importance.csv, metadata.json
+[FIGURE SAVED] summary.png  |  caption: SHAP beeswarm summary plot (top features by impact).
+[FIGURE SAVED] bar.png  |  caption: Features ranked by mean |SHAP value|.
+[FIGURE SAVED] waterfall_case1.png  |  caption: SHAP waterfall for a correctly classified test instance (y_true=0, y_pred=0, p(class 1)=0.000).
+[FIGURE SAVED] waterfall_case2.png  |  caption: SHAP waterfall for a incorrectly classified test instance (y_true=1, y_pred=0, p(class 1)=0.272).
+
+------------------------------------------------------------
+5. LIME EXPLANATIONS
+------------------------------------------------------------
+LIME explanations for 114 instances, computed in 4.8s
+Saved: lime_explanations.csv, lime_instance_summary.csv, metadata.json
+[FIGURE SAVED] case1.png  |  caption: Standard LIME local explanation for a correctly classified test instance (y_true=0, y_pred=0, p(class 1)=0.000).
+[FIGURE SAVED] case2.png  |  caption: Standard LIME local explanation for a incorrectly classified test instance (y_true=1, y_pred=0, p(class 1)=0.272).
+Updated master experiment protocol: ../Explanations\experiment_protocol.json (3 run(s) covered)
+
+------------------------------------------------------------
+DONE
+------------------------------------------------------------
+Explanation artifacts at: ../Explanations\healthcare\breast_cancer_wisconsin\rf

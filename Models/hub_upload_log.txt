@@ -1,0 +1,71 @@
+PREPROCESSING LOG
+============================================================
+
+------------------------------------------------------------
+HUB UPLOAD
+------------------------------------------------------------
+Found 12 completed training run(s) under ../Models
+
+------------------------------------------------------------
+9. PUSH TO HUGGING FACE HUB
+------------------------------------------------------------
+Pushed to https://huggingface.co/cike-dev/xai-credit-card-fraud-2023-rf (commit e7d519b480d8b823b525a13110ab1ed6afe8fecd)
+UPLOADED  finance/credit_card_fraud_2023/rf  ->  cike-dev/xai-credit-card-fraud-2023-rf  (commit e7d519b480d8b823b525a13110ab1ed6afe8fecd)
+
+------------------------------------------------------------
+9. PUSH TO HUGGING FACE HUB
+------------------------------------------------------------
+Pushed to https://huggingface.co/cike-dev/xai-credit-card-fraud-2023-xgb (commit 9771513ed62436c29720191cb846aa41510d52c5)
+UPLOADED  finance/credit_card_fraud_2023/xgb  ->  cike-dev/xai-credit-card-fraud-2023-xgb  (commit 9771513ed62436c29720191cb846aa41510d52c5)
+
+------------------------------------------------------------
+9. PUSH TO HUGGING FACE HUB
+------------------------------------------------------------
+Pushed to https://huggingface.co/cike-dev/xai-financial-distress-rf (commit cba05e89f5a675867be98a11b704aed3695700cd)
+UPLOADED  finance/financial_distress/rf  ->  cike-dev/xai-financial-distress-rf  (commit cba05e89f5a675867be98a11b704aed3695700cd)
+
+------------------------------------------------------------
+9. PUSH TO HUGGING FACE HUB
+------------------------------------------------------------
+Pushed to https://huggingface.co/cike-dev/xai-financial-distress-xgb (commit d600bcb5ddf511a90d87cd5ed0c81b219b05d989)
+UPLOADED  finance/financial_distress/xgb  ->  cike-dev/xai-financial-distress-xgb  (commit d600bcb5ddf511a90d87cd5ed0c81b219b05d989)
+
+------------------------------------------------------------
+9. PUSH TO HUGGING FACE HUB
+------------------------------------------------------------
+Pushed to https://huggingface.co/cike-dev/xai-loan-default-rf (commit 9976aa476cdcbc9f325d058990455b641771b38d)
+UPLOADED  finance/loan_default/rf  ->  cike-dev/xai-loan-default-rf  (commit 9976aa476cdcbc9f325d058990455b641771b38d)
+
+------------------------------------------------------------
+9. PUSH TO HUGGING FACE HUB
+------------------------------------------------------------
+Pushed to https://huggingface.co/cike-dev/xai-loan-default-xgb (commit e2eb95715694b620d6983fae2a2aabb92ecb2f96)
+UPLOADED  finance/loan_default/xgb  ->  cike-dev/xai-loan-default-xgb  (commit e2eb95715694b620d6983fae2a2aabb92ecb2f96)
+SKIP  healthcare/breast_cancer_wisconsin/rf  (already uploaded, commit aaa11046ba0a855459236635c91e0f31c7b8dcef)
+SKIP  healthcare/breast_cancer_wisconsin/xgb  (already uploaded, commit a28745f6106fb312c93f5e21ee158d1fd8d42c6c)
+SKIP  healthcare/heart_disease_uci/rf  (already uploaded, commit a5b44f9ddb06fb2e4f75c459e47b73b57cc869f0)
+SKIP  healthcare/heart_disease_uci/xgb  (already uploaded, commit cb7bd211c66931be5ee8f0fb7f7071a6a789fc6f)
+
+------------------------------------------------------------
+9. PUSH TO HUGGING FACE HUB
+------------------------------------------------------------
+Pushed to https://huggingface.co/cike-dev/xai-pima-diabetes-rf (commit b84b0a518e8467eccf8a7ba6535c79f3190151c4)
+UPLOADED  healthcare/pima_diabetes/rf  ->  cike-dev/xai-pima-diabetes-rf  (commit b84b0a518e8467eccf8a7ba6535c79f3190151c4)
+SKIP  healthcare/pima_diabetes/xgb  (already uploaded, commit 8cd640316276d9ec646b9d84053814b51d5ef034)
+
+------------------------------------------------------------
+HUB UPLOAD SUMMARY
+------------------------------------------------------------
+Uploaded: 7  |  Skipped (already uploaded): 5  |  Failed: 0
+  [uploaded] finance/credit_card_fraud_2023/rf
+  [uploaded] finance/credit_card_fraud_2023/xgb
+  [uploaded] finance/financial_distress/rf
+  [uploaded] finance/financial_distress/xgb
+  [uploaded] finance/loan_default/rf
+  [uploaded] finance/loan_default/xgb
+  [uploaded] healthcare/pima_diabetes/rf
+  [skipped] healthcare/breast_cancer_wisconsin/rf
+  [skipped] healthcare/breast_cancer_wisconsin/xgb
+  [skipped] healthcare/heart_disease_uci/rf
+  [skipped] healthcare/heart_disease_uci/xgb
+  [skipped] healthcare/pima_diabetes/xgb

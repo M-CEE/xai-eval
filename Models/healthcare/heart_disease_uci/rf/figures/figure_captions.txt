@@ -1,0 +1,7 @@
+FIGURE CAPTIONS (filename -> caption)
+============================================================
+fig_confusion_matrix.png: Confusion matrix on the held-out test set.
+fig_roc_curve.png: ROC curve on the held-out test set.
+fig_precision_recall_curve.png: Precision-Recall curve on the held-out test set.
+fig_hyperparameter_search_scores.png: Distribution of mean CV roc_auc across all RandomizedSearchCV candidates (dashed line = best candidate).
+fig_baseline_feature_importance.png: RF built-in feature importance (Gini/gain), top 20 features -- a sanity-check baseline, not a SHAP/LIME explanation.

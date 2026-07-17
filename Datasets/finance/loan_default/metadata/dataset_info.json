@@ -1,0 +1,28 @@
+{
+  "dataset_name": "loan_default",
+  "domain": "finance",
+  "source": "https://raw.githubusercontent.com/f-kuzey-edes-huyal/loan_default_prediction/main/Loan_default.csv",
+  "rows": 255347,
+  "features": 16,
+  "target": "Default",
+  "numerical_features": [
+    "Age",
+    "Income",
+    "LoanAmount",
+    "CreditScore",
+    "MonthsEmployed",
+    "NumCreditLines",
+    "InterestRate",
+    "LoanTerm",
+    "DTIRatio"
+  ],
+  "categorical_features": [
+    "Education",
+    "EmploymentType",
+    "MaritalStatus",
+    "HasMortgage",
+    "HasDependents",
+    "LoanPurpose",
+    "HasCoSigner"
+  ]
+}

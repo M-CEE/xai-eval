@@ -1,0 +1,92 @@
+{
+  "explainer_library": "lime",
+  "explainer_type": "LimeTabularExplainer",
+  "lime_version": "unknown",
+  "mode": "classification",
+  "discretize_continuous": true,
+  "num_samples_per_instance": 1000,
+  "num_features_per_instance": 30,
+  "background_data_source": "X_train_balanced",
+  "background_data_rows": 570,
+  "n_instances_explained": 114,
+  "instance_selection_random_state": 42,
+  "lime_random_state": 42,
+  "dataset_characteristics": {
+    "dataset_name": "breast_cancer_wisconsin",
+    "domain": "healthcare",
+    "n_features": 30,
+    "feature_names": [
+      "radius_mean",
+      "texture_mean",
+      "perimeter_mean",
+      "area_mean",
+      "smoothness_mean",
+      "compactness_mean",
+      "concavity_mean",
+      "concave points_mean",
+      "symmetry_mean",
+      "fractal_dimension_mean",
+      "radius_se",
+      "texture_se",
+      "perimeter_se",
+      "area_se",
+      "smoothness_se",
+      "compactness_se",
+      "concavity_se",
+      "concave points_se",
+      "symmetry_se",
+      "fractal_dimension_se",
+      "radius_worst",
+      "texture_worst",
+      "perimeter_worst",
+      "area_worst",
+      "smoothness_worst",
+      "compactness_worst",
+      "concavity_worst",
+      "concave points_worst",
+      "symmetry_worst",
+      "fractal_dimension_worst"
+    ],
+    "n_test_total": 114,
+    "n_train_balanced_total": 570,
+    "test_class_distribution": {
+      "0": 0.631578947368421,
+      "1": 0.3684210526315789
+    }
+  },
+  "model_reference": {
+    "dataset_name": "breast_cancer_wisconsin",
+    "domain": "healthcare",
+    "model_type": "rf",
+    "model_name": "rf",
+    "model_path": "../Models\\healthcare\\breast_cancer_wisconsin\\rf\\model\\model.skops",
+    "training_random_state": 42,
+    "training_scoring": "roc_auc",
+    "best_hyperparameters": {
+      "max_depth": 20,
+      "max_features": "log2",
+      "min_samples_split": 2,
+      "n_estimators": 147
+    },
+    "hub_repo_id": "cike-dev/xai-breast-cancer-wisconsin-rf",
+    "hub_commit_sha": "aaa11046ba0a855459236635c91e0f31c7b8dcef",
+    "test_performance": {
+      "accuracy": 0.9736842105263158,
+      "precision": 1.0,
+      "recall": 0.9285714285714286,
+      "f1": 0.9629629629629629,
+      "roc_auc": 0.9965277777777778,
+      "pr_auc": 0.9941520749407504
+    }
+  },
+  "library_versions": {
+    "lime": "unknown",
+    "sklearn": "1.7.2",
+    "xgboost": "3.3.0",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "python": "3.13.9"
+  },
+  "runtime_seconds": 4.84,
+  "generated_at_utc": "2026-07-12T20:09:59.719537Z"
+}
