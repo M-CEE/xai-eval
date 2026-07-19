@@ -1,0 +1,19 @@
+PREPROCESSING LOG
+============================================================
+
+------------------------------------------------------------
+ROBUSTNESS: credit_card_fraud_2023 x xgb
+------------------------------------------------------------
+Loaded model (skops): Models\finance\credit_card_fraud_2023\xgb\model\model.skops (trusted types: ['xgboost.core.Booster', 'xgboost.sklearn.XGBClassifier'])
+Feature-group map for credit_card_fraud_2023: 29 original features (from 29 model-input columns).
+Computed std for 29 numerical feature(s) from Datasets\finance\credit_card_fraud_2023\processed\data\X_train_prebalance.csv.
+Wrote 14500 rows to Evaluation/Robustness\finance\credit_card_fraud_2023\xgb\shap\perturbation_attributions.csv
+shap: robustness computed for 500 instance(s).
+Wrote 14500 rows to Evaluation/Robustness\finance\credit_card_fraud_2023\xgb\lime\perturbation_attributions.csv
+lime: robustness computed for 500 instance(s).
+Appended 2000 row(s) to Evaluation\metrics_long.csv
+
+------------------------------------------------------------
+DONE
+------------------------------------------------------------
+Robustness: 2000 metrics_long rows written across ['shap', 'lime'].
