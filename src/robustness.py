@@ -57,6 +57,15 @@ RESOLVED PROTOCOL:
          stay the same."
    A robust explanation shows HIGH correlation / overlap: a small nudge to
    the input should not meaningfully reorder the ranked feature list.
+
+5. Auditable artifact: Evaluation/Robustness/<domain>/<dataset>/<model>/
+   <explainer>/perturbation_attributions.csv -- one row per
+   (instance_id, original_feature), recording the original and perturbed
+   aggregated attribution for that feature. This is the fine-grained
+   analogue of Fidelity's masked_predictions.csv: it is what lets Spearman
+   correlation or top-k overlap be recomputed later under a different k (or
+   a different correlation measure entirely) without re-perturbing and
+   re-explaining every instance from scratch.
 """
 
 import os
@@ -285,6 +294,8 @@ def run_robustness(config):
         explanations_root  (default: "Explanations")
         models_root        (default: "Models")
         evaluation_root    (default: "Evaluation")
+        robustness_root     (default: "Evaluation/Robustness" -- where
+                             perturbation_attributions.csv is written)
         epsilon             (default: EPSILON = 0.05)
         random_state        (default: taken from the original run's metadata)
     """
@@ -298,6 +309,7 @@ def run_robustness(config):
     explanations_root = config.get("explanations_root", "Explanations")
     models_root = config.get("models_root", "Models")
     evaluation_root = config.get("evaluation_root", "Evaluation")
+    robustness_root = config.get("robustness_root", os.path.join(evaluation_root, "Robustness"))
     epsilon = config.get("epsilon", EPSILON)
 
     logger = Logger(os.path.join(evaluation_root, "logs"), filename="robustness_log.txt")
@@ -326,6 +338,7 @@ def run_robustness(config):
     all_original_features = list(group_map.keys())
     now = dt.datetime.utcnow().isoformat() + "Z"
     all_metric_rows = []
+    robustness_dir_base = os.path.join(robustness_root, domain, dataset_name, model_name)
 
     for explainer in explainers:
         if explainer == "shap":
@@ -376,6 +389,7 @@ def run_robustness(config):
         deterministic = (explainer == "shap")
         rng = np.random.default_rng(random_state)
         n_parse_failures_total = 0
+        perturbation_attribution_rows = []
 
         for pos, iid in enumerate(instance_ids):
             if iid not in per_instance_original:
@@ -410,6 +424,14 @@ def run_robustness(config):
                 per_instance_original[iid], perturbed_agg, all_original_features,
             )
 
+            for feat in all_original_features:
+                perturbation_attribution_rows.append({
+                    "instance_id": iid, "perturbation_id": 0, "repeat_seed": instance_seed,
+                    "feature": feat,
+                    "original_attribution": per_instance_original[iid].get(feat, 0.0),
+                    "perturbed_attribution": perturbed_agg.get(feat, 0.0),
+                })
+
             base_row = {
                 "experiment_id": config["experiment_id"], "domain": domain, "dataset": dataset_name,
                 "model": model_name, "explainer": explainer, "metric_property": "Robustness",
@@ -427,6 +449,11 @@ def run_robustness(config):
         if explainer == "lime" and n_parse_failures_total:
             logger.log(f"WARNING: {n_parse_failures_total} LIME condition string(s) unparsed across "
                        "perturbed-instance explanations.")
+
+        os.makedirs(os.path.join(robustness_dir_base, explainer), exist_ok=True)
+        artifact_path = os.path.join(robustness_dir_base, explainer, "perturbation_attributions.csv")
+        pd.DataFrame(perturbation_attribution_rows).to_csv(artifact_path, index=False)
+        logger.log(f"Wrote {len(perturbation_attribution_rows)} rows to {artifact_path}")
         logger.log(f"{explainer}: robustness computed for {sum(1 for r in all_metric_rows if r['explainer']==explainer) // 2} instance(s).")
 
     append_metrics(evaluation_root, all_metric_rows, logger)

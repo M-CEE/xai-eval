@@ -55,7 +55,7 @@ RESOLVED PROTOCOL (matches the agreed decisions):
    each dataset's own class-imbalance direction.
    AOPC = mean of the 4 k-level values, per instance per condition.
 
-5. Auditable artifact: Fidelity/<domain>/<dataset>/<model>/<explainer>/
+5. Auditable artifact: Evaluation/Fidelity/<domain>/<dataset>/<model>/<explainer>/
    masked_predictions.csv -- one row per (instance, k, condition), with
    original and masked predicted-class probability. This is what lets you
    recompute AOPC under a different k-weighting later without re-scoring
@@ -339,7 +339,7 @@ def run_fidelity(config):
         explanations_root  (default: "Explanations")
         models_root        (default: "Models")
         evaluation_root    (default: "Evaluation")
-        fidelity_root       (default: "Fidelity" -- where masked_predictions.csv is written)
+        fidelity_root       (default: "Evaluation/Fidelity" -- where masked_predictions.csv is written)
         mask_fractions      (default: MASK_FRACTIONS)
     """
     for key in ("dataset_name", "domain", "model_name", "experiment_id"):
@@ -352,7 +352,7 @@ def run_fidelity(config):
     explanations_root = config.get("explanations_root", "Explanations")
     models_root = config.get("models_root", "Models")
     evaluation_root = config.get("evaluation_root", "Evaluation")
-    fidelity_root = config.get("fidelity_root", "Fidelity")
+    fidelity_root = config.get("fidelity_root", os.path.join("Evaluation", "Fidelity"))
     mask_fractions = config.get("mask_fractions", MASK_FRACTIONS)
 
     logger = Logger(os.path.join(evaluation_root, "logs"), filename="fidelity_log.txt")
